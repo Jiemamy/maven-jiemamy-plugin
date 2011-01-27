@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jiemamy xmlns="http://jiemamy.org/xml/ns/core" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="20331948-0618-4069-952c-c884ea4449ed" version="0.2" xsi:schemaLocation="http://jiemamy.org/xml/ns/core http://jiemamy.org/xml/0.2/jiemamy-core.xsd http://jiemamy.org/xml/ns/view http://jiemamy.org/xml/0.2/jiemamy-view.xsd">
+  <dialect>org.jiemamy.dialect.postgresql.PostgresqlDialect</dialect>
+  <endScript>SELECT setval('emp_id_seq', 14);</endScript>
+  <domains/>
+  <entities>
+    <table id="b0eb61af-8f86-47ab-bde4-bc4fc9bdc47a">
+      <name>DEPT</name>
+      <logicalName>部署</logicalName>
+      <description>部署テーブルです。</description>
+      <attributes>
+        <primaryKey id="aa335d18-9a4a-4337-883a-445757fb8d1f">
+          <columnRefs>
+            <columnRef ref="d1bc12f1-068e-4299-9e24-c88bd67e2c13"/>
+          </columnRefs>
+        </primaryKey>
+        <column id="d1bc12f1-068e-4299-9e24-c88bd67e2c13">
+          <name>ID</name>
+          <logicalName>部署ID</logicalName>
+          <description>ほげほげ</description>
+          <dataType>
+            <typeCategory>INTEGER</typeCategory>
+            <typeName>SERIAL</typeName>
+          </dataType>
+          <notNull id="191f5cd2-f063-4454-8467-6342f7f4a822"/>
+        </column>
+        <column id="d783d6d9-737b-4198-ae94-42c3d5b3570b">
+          <name>DEPT_NO</name>
+          <logicalName>部署NO</logicalName>
+          <dataType>
+            <typeCategory>INTEGER</typeCategory>
+            <typeName>INTEGER</typeName>
+          </dataType>
+          <notNull id="99350550-4ed2-4512-9512-663756587168"/>
+        </column>
+        <column id="9fbbd509-18f3-4209-82ea-481ac387980c">
+          <name>DEPT_NAME</name>
+          <logicalName>部署名</logicalName>
+          <dataType>
+            <typeCategory>VARCHAR</typeCategory>
+            <typeName>VARCHAR</typeName>
+            <adapter class="org.jiemamy.model.datatype.adapter.SizedDataTypeAdapter">
+              <size>20</size>
+            </adapter>
+          </dataType>
+        </column>
+        <column id="626102d4-8235-495e-9759-3ea600dbce6c">
+          <name>LOC</name>
+          <logicalName>ロケーション</logicalName>
+          <dataType>
+            <typeCategory>VARCHAR</typeCategory>
+            <typeName>VARCHAR</typeName>
+            <adapter class="org.jiemamy.model.datatype.adapter.SizedDataTypeAdapter">
+              <size>20</size>
+            </adapter>
+          </dataType>
+        </column>
+        <column id="00d8aebd-11ec-47d8-9f2e-1ca135c78fcd">
+          <name>VERSION_NO</name>
+          <dataType>
+            <typeCategory>INTEGER</typeCategory>
+            <typeName>INTEGER</typeName>
+          </dataType>
+        </column>
+      </attributes>
+      <indexes/>
+    </table>
+    <table id="d492ab23-b213-4cb3-bc50-3c865eb1b59d">
+      <name>EMP</name>
+      <logicalName>従業員</logicalName>
+      <description>従業員のテーブルです。</description>
+      <attributes>
+        <primaryKey id="70fe04ba-e762-453d-8120-2d926e98355b">
+          <columnRefs>
+            <columnRef ref="9b948a38-607b-4883-8ee6-bc44dc00a256"/>
+          </columnRefs>
+        </primaryKey>
+        <column id="9b948a38-607b-4883-8ee6-bc44dc00a256">
+          <name>ID</name>
+          <logicalName>従業員ID</logicalName>
+          <dataType>
+            <typeCategory>INTEGER</typeCategory>
+            <typeName>SERIAL</typeName>
+          </dataType>
+          <notNull id="a788908a-7b9d-4d5d-a8e6-c920b0d66947"/>
+        </column>
+        <column id="0f469616-6432-4a4d-9de5-a10e100668a4">
+          <name>EMP_NO</name>
+          <logicalName>従業員NO</logicalName>
+          <dataType>
+            <typeCategory>INTEGER</typeCategory>
+            <typeName>INTEGER</typeName>
+          </dataType>
+          <notNull id="472f7063-fb7c-489a-b5a7-f693fe066d35"/>
+        </column>
+        <column id="52e31885-3619-4185-9bcb-4e8f004a42ad">
+          <name>EMP_NAME</name>
+          <logicalName>従業員名</logicalName>
+          <dataType>
+            <typeCategory>VARCHAR</typeCategory>
+            <typeName>VARCHAR</typeName>
+            <adapter class="org.jiemamy.model.datatype.adapter.SizedDataTypeAdapter">
+              <size>20</size>
+            </adapter>
+          </dataType>
+        </column>
+        <column id="fbde8ebe-f1d0-4e41-82d3-92915baabdb5">
+          <name>MGR_ID</name>
+          <logicalName>役職ID</logicalName>
+          <dataType>
+            <typeCategory>INTEGER</typeCategory>
+            <typeName>INTEGER</typeName>
+          </dataType>
+          <defaultValue>1</defaultValue>
+        </column>
+        <column id="bb508d71-e082-4aef-9ee0-b964a5fe16a0">
+          <name>HIREDATE</name>
+          <logicalName>契約日</logicalName>
+          <dataType>
+            <typeCategory>DATE</typeCategory>
+            <typeName>DATE</typeName>
+          </dataType>
+        </column>
+        <column id="c869b6bd-6c90-4194-8664-fa8b57357ff1">
+          <name>SAL</name>
+          <logicalName>給料</logicalName>
+          <dataType>
+            <typeCategory>DECIMAL</typeCategory>
+            <typeName>DECIMAL</typeName>
+            <adapter class="org.jiemamy.model.datatype.adapter.PrecisionedDataTypeAdapter">
+              <precision>7</precision>
+              <scale>2</scale>
+            </adapter>
+          </dataType>
+        </column>
+        <column id="4db0a4db-709c-4c80-bc36-f043e8c49116">
+          <name>DEPT_ID</name>
+          <logicalName>部署ID</logicalName>
+          <description>ほげほげ</description>
+          <dataType>
+            <typeCategory>INTEGER</typeCategory>
+            <typeName>INTEGER</typeName>
+          </dataType>
+        </column>
+        <column id="b1ac3bc7-04b1-41b4-b182-a4002da045c8">
+          <name>VERSION_NO</name>
+          <dataType>
+            <typeCategory>INTEGER</typeCategory>
+            <typeName>INTEGER</typeName>
+          </dataType>
+        </column>
+        <foreignKey id="441c5fe6-08ba-49ba-8ca7-3e5cc9e00c97">
+          <columnRefs>
+            <columnRef ref="4db0a4db-709c-4c80-bc36-f043e8c49116"/>
+          </columnRefs>
+          <referenceColumns>
+            <columnRef ref="d1bc12f1-068e-4299-9e24-c88bd67e2c13"/>
+          </referenceColumns>
+        </foreignKey>
+      </attributes>
+      <indexes/>
+    </table>
+  </entities>
+  <dataSets>
+    <dataSet id="3d598887-585f-40df-8d5f-3505bc118d5c">
+      <name>jiemamy.dml</name>
+      <tableRef ref="b0eb61af-8f86-47ab-bde4-bc4fc9bdc47a">
+        <record id="0d0a3cbb-dd8d-4cda-9935-6f943efa4c84">
+          <columnRef ref="2a0b272c-0600-4235-9ba2-d9ce0a959b6e">1</columnRef>
+          <columnRef ref="d1bc12f1-068e-4299-9e24-c88bd67e2c13">1</columnRef>
+          <columnRef ref="d783d6d9-737b-4198-ae94-42c3d5b3570b">10</columnRef>
+          <columnRef ref="9fbbd509-18f3-4209-82ea-481ac387980c">ACCOUNTING</columnRef>
+          <columnRef ref="626102d4-8235-495e-9759-3ea600dbce6c">NEW YORK</columnRef>
+          <columnRef ref="00d8aebd-11ec-47d8-9f2e-1ca135c78fcd">1</columnRef>
+        </record>
+        <record id="2edb73ee-fd1f-4834-a886-94e7ad4e6d4e">
+          <columnRef ref="d1bc12f1-068e-4299-9e24-c88bd67e2c13">2</columnRef>
+          <columnRef ref="d783d6d9-737b-4198-ae94-42c3d5b3570b">20</columnRef>
+          <columnRef ref="9fbbd509-18f3-4209-82ea-481ac387980c">RESEARCH</columnRef>
+          <columnRef ref="626102d4-8235-495e-9759-3ea600dbce6c">DALLAS</columnRef>
+          <columnRef ref="00d8aebd-11ec-47d8-9f2e-1ca135c78fcd">1</columnRef>
+        </record>
+        <record id="3f33079c-5a3d-40f3-9d67-25df203e6398">
+          <columnRef ref="d1bc12f1-068e-4299-9e24-c88bd67e2c13">3</columnRef>
+          <columnRef ref="d783d6d9-737b-4198-ae94-42c3d5b3570b">30</columnRef>
+          <columnRef ref="9fbbd509-18f3-4209-82ea-481ac387980c">SALES</columnRef>
+          <columnRef ref="626102d4-8235-495e-9759-3ea600dbce6c">CHICAGO</columnRef>
+          <columnRef ref="00d8aebd-11ec-47d8-9f2e-1ca135c78fcd">1</columnRef>
+        </record>
+        <record id="6ddd388e-8bea-4a79-aed9-b9392da49608">
+          <columnRef ref="d1bc12f1-068e-4299-9e24-c88bd67e2c13">4</columnRef>
+          <columnRef ref="d783d6d9-737b-4198-ae94-42c3d5b3570b">40</columnRef>
+          <columnRef ref="9fbbd509-18f3-4209-82ea-481ac387980c">OPERATIONS</columnRef>
+          <columnRef ref="626102d4-8235-495e-9759-3ea600dbce6c">BOSTON</columnRef>
+          <columnRef ref="00d8aebd-11ec-47d8-9f2e-1ca135c78fcd">1</columnRef>
+        </record>
+      </tableRef>
+      <tableRef ref="d492ab23-b213-4cb3-bc50-3c865eb1b59d">
+        <record id="20b4df66-cf21-40a6-82da-44c2f5252c4d">
+          <columnRef ref="9b948a38-607b-4883-8ee6-bc44dc00a256">1</columnRef>
+          <columnRef ref="0f469616-6432-4a4d-9de5-a10e100668a4">7369</columnRef>
+          <columnRef ref="52e31885-3619-4185-9bcb-4e8f004a42ad">SMITH</columnRef>
+          <columnRef ref="fbde8ebe-f1d0-4e41-82d3-92915baabdb5">13</columnRef>
+          <columnRef ref="bb508d71-e082-4aef-9ee0-b964a5fe16a0">1980-12-17</columnRef>
+          <columnRef ref="c869b6bd-6c90-4194-8664-fa8b57357ff1">800</columnRef>
+          <columnRef ref="4db0a4db-709c-4c80-bc36-f043e8c49116">2</columnRef>
+          <columnRef ref="b1ac3bc7-04b1-41b4-b182-a4002da045c8">1</columnRef>
+        </record>
+        <record id="efc21a71-f439-4c65-8b9e-51603f8105ea">
+          <columnRef ref="9b948a38-607b-4883-8ee6-bc44dc00a256">2</columnRef>
+          <columnRef ref="0f469616-6432-4a4d-9de5-a10e100668a4">7499</columnRef>
+          <columnRef ref="52e31885-3619-4185-9bcb-4e8f004a42ad">ALLEN</columnRef>
+          <columnRef ref="fbde8ebe-f1d0-4e41-82d3-92915baabdb5">6</columnRef>
+          <columnRef ref="bb508d71-e082-4aef-9ee0-b964a5fe16a0">1981-02-20</columnRef>
+          <columnRef ref="c869b6bd-6c90-4194-8664-fa8b57357ff1">1600</columnRef>
+          <columnRef ref="4db0a4db-709c-4c80-bc36-f043e8c49116">3</columnRef>
+          <columnRef ref="b1ac3bc7-04b1-41b4-b182-a4002da045c8">1</columnRef>
+        </record>
+        <record id="7ec3c890-aaea-4d4b-a5ad-89cc933d7afa">
+          <columnRef ref="9b948a38-607b-4883-8ee6-bc44dc00a256">3</columnRef>
+          <columnRef ref="0f469616-6432-4a4d-9de5-a10e100668a4">7521</columnRef>
+          <columnRef ref="52e31885-3619-4185-9bcb-4e8f004a42ad">WARD</columnRef>
+          <columnRef ref="fbde8ebe-f1d0-4e41-82d3-92915baabdb5">6</columnRef>
+          <columnRef ref="bb508d71-e082-4aef-9ee0-b964a5fe16a0">1981-02-22</columnRef>
+          <columnRef ref="c869b6bd-6c90-4194-8664-fa8b57357ff1">1250</columnRef>
+          <columnRef ref="4db0a4db-709c-4c80-bc36-f043e8c49116">3</columnRef>
+          <columnRef ref="b1ac3bc7-04b1-41b4-b182-a4002da045c8">1</columnRef>
+        </record>
+        <record id="28837a6d-be6a-4942-9707-94a4010adc3c">
+          <columnRef ref="9b948a38-607b-4883-8ee6-bc44dc00a256">4</columnRef>
+          <columnRef ref="0f469616-6432-4a4d-9de5-a10e100668a4">7566</columnRef>
+          <columnRef ref="52e31885-3619-4185-9bcb-4e8f004a42ad">JONES</columnRef>
+          <columnRef ref="fbde8ebe-f1d0-4e41-82d3-92915baabdb5">9</columnRef>
+          <columnRef ref="bb508d71-e082-4aef-9ee0-b964a5fe16a0">1981-04-02</columnRef>
+          <columnRef ref="c869b6bd-6c90-4194-8664-fa8b57357ff1">2975</columnRef>
+          <columnRef ref="4db0a4db-709c-4c80-bc36-f043e8c49116">2</columnRef>
+          <columnRef ref="b1ac3bc7-04b1-41b4-b182-a4002da045c8">1</columnRef>
+        </record>
+        <record id="273d62d0-2231-4e1c-888c-b475c19036b5">
+          <columnRef ref="9b948a38-607b-4883-8ee6-bc44dc00a256">5</columnRef>
+          <columnRef ref="0f469616-6432-4a4d-9de5-a10e100668a4">7654</columnRef>
+          <columnRef ref="52e31885-3619-4185-9bcb-4e8f004a42ad">MARTIN</columnRef>
+          <columnRef ref="fbde8ebe-f1d0-4e41-82d3-92915baabdb5">6</columnRef>
+          <columnRef ref="bb508d71-e082-4aef-9ee0-b964a5fe16a0">1981-09-28</columnRef>
+          <columnRef ref="c869b6bd-6c90-4194-8664-fa8b57357ff1">1250</columnRef>
+          <columnRef ref="4db0a4db-709c-4c80-bc36-f043e8c49116">3</columnRef>
+          <columnRef ref="b1ac3bc7-04b1-41b4-b182-a4002da045c8">1</columnRef>
+        </record>
+        <record id="7511ee49-f9b8-482b-a974-8a2ebfa85b03">
+          <columnRef ref="9b948a38-607b-4883-8ee6-bc44dc00a256">6</columnRef>
+          <columnRef ref="0f469616-6432-4a4d-9de5-a10e100668a4">7698</columnRef>
+          <columnRef ref="52e31885-3619-4185-9bcb-4e8f004a42ad">BLAKE</columnRef>
+          <columnRef ref="fbde8ebe-f1d0-4e41-82d3-92915baabdb5">9</columnRef>
+          <columnRef ref="bb508d71-e082-4aef-9ee0-b964a5fe16a0">1981-05-01</columnRef>
+          <columnRef ref="c869b6bd-6c90-4194-8664-fa8b57357ff1">2850</columnRef>
+          <columnRef ref="4db0a4db-709c-4c80-bc36-f043e8c49116">3</columnRef>
+          <columnRef ref="b1ac3bc7-04b1-41b4-b182-a4002da045c8">1</columnRef>
+        </record>
+        <record id="f2622432-b82a-43da-b8ff-16344c7f1dcc">
+          <columnRef ref="9b948a38-607b-4883-8ee6-bc44dc00a256">7</columnRef>
+          <columnRef ref="0f469616-6432-4a4d-9de5-a10e100668a4">7782</columnRef>
+          <columnRef ref="52e31885-3619-4185-9bcb-4e8f004a42ad">CLARK</columnRef>
+          <columnRef ref="fbde8ebe-f1d0-4e41-82d3-92915baabdb5">9</columnRef>
+          <columnRef ref="bb508d71-e082-4aef-9ee0-b964a5fe16a0">1981-06-09</columnRef>
+          <columnRef ref="c869b6bd-6c90-4194-8664-fa8b57357ff1">2450</columnRef>
+          <columnRef ref="4db0a4db-709c-4c80-bc36-f043e8c49116">1</columnRef>
+          <columnRef ref="b1ac3bc7-04b1-41b4-b182-a4002da045c8">1</columnRef>
+        </record>
+        <record id="bbfac8b8-4e4d-4995-bd09-c3577529fbed">
+          <columnRef ref="9b948a38-607b-4883-8ee6-bc44dc00a256">8</columnRef>
+          <columnRef ref="0f469616-6432-4a4d-9de5-a10e100668a4">7788</columnRef>
+          <columnRef ref="52e31885-3619-4185-9bcb-4e8f004a42ad">SCOTT</columnRef>
+          <columnRef ref="fbde8ebe-f1d0-4e41-82d3-92915baabdb5">4</columnRef>
+          <columnRef ref="bb508d71-e082-4aef-9ee0-b964a5fe16a0">1982-12-09</columnRef>
+          <columnRef ref="c869b6bd-6c90-4194-8664-fa8b57357ff1">3000.0</columnRef>
+          <columnRef ref="4db0a4db-709c-4c80-bc36-f043e8c49116">2</columnRef>
+          <columnRef ref="b1ac3bc7-04b1-41b4-b182-a4002da045c8">1</columnRef>
+        </record>
+        <record id="e8ed707a-9bf9-4411-8a2b-b58a12017cee">
+          <columnRef ref="9b948a38-607b-4883-8ee6-bc44dc00a256">9</columnRef>
+          <columnRef ref="0f469616-6432-4a4d-9de5-a10e100668a4">7839</columnRef>
+          <columnRef ref="52e31885-3619-4185-9bcb-4e8f004a42ad">KING</columnRef>
+          <columnRef ref="fbde8ebe-f1d0-4e41-82d3-92915baabdb5">NULL</columnRef>
+          <columnRef ref="bb508d71-e082-4aef-9ee0-b964a5fe16a0">1981-11-17</columnRef>
+          <columnRef ref="c869b6bd-6c90-4194-8664-fa8b57357ff1">5000</columnRef>
+          <columnRef ref="4db0a4db-709c-4c80-bc36-f043e8c49116">1</columnRef>
+          <columnRef ref="b1ac3bc7-04b1-41b4-b182-a4002da045c8">1</columnRef>
+        </record>
+        <record id="da68a348-b457-4418-9fe8-0a9c03cf5ea6">
+          <columnRef ref="9b948a38-607b-4883-8ee6-bc44dc00a256">10</columnRef>
+          <columnRef ref="0f469616-6432-4a4d-9de5-a10e100668a4">7844</columnRef>
+          <columnRef ref="52e31885-3619-4185-9bcb-4e8f004a42ad">TURNER</columnRef>
+          <columnRef ref="fbde8ebe-f1d0-4e41-82d3-92915baabdb5">6</columnRef>
+          <columnRef ref="bb508d71-e082-4aef-9ee0-b964a5fe16a0">1981-09-08</columnRef>
+          <columnRef ref="c869b6bd-6c90-4194-8664-fa8b57357ff1">1500</columnRef>
+          <columnRef ref="4db0a4db-709c-4c80-bc36-f043e8c49116">3</columnRef>
+          <columnRef ref="b1ac3bc7-04b1-41b4-b182-a4002da045c8">1</columnRef>
+        </record>
+        <record id="5c9aad71-ed2a-4653-a586-fa32ef2517e0">
+          <columnRef ref="9b948a38-607b-4883-8ee6-bc44dc00a256">11</columnRef>
+          <columnRef ref="0f469616-6432-4a4d-9de5-a10e100668a4">7876</columnRef>
+          <columnRef ref="52e31885-3619-4185-9bcb-4e8f004a42ad">ADAMS</columnRef>
+          <columnRef ref="fbde8ebe-f1d0-4e41-82d3-92915baabdb5">8</columnRef>
+          <columnRef ref="bb508d71-e082-4aef-9ee0-b964a5fe16a0">1983-01-12</columnRef>
+          <columnRef ref="c869b6bd-6c90-4194-8664-fa8b57357ff1">1100</columnRef>
+          <columnRef ref="4db0a4db-709c-4c80-bc36-f043e8c49116">2</columnRef>
+          <columnRef ref="b1ac3bc7-04b1-41b4-b182-a4002da045c8">1</columnRef>
+        </record>
+        <record id="4c23cfb5-7caa-490e-b856-09d7e20f09e3">
+          <columnRef ref="9b948a38-607b-4883-8ee6-bc44dc00a256">12</columnRef>
+          <columnRef ref="0f469616-6432-4a4d-9de5-a10e100668a4">7900</columnRef>
+          <columnRef ref="52e31885-3619-4185-9bcb-4e8f004a42ad">JAMES</columnRef>
+          <columnRef ref="fbde8ebe-f1d0-4e41-82d3-92915baabdb5">6</columnRef>
+          <columnRef ref="bb508d71-e082-4aef-9ee0-b964a5fe16a0">1981-12-03</columnRef>
+          <columnRef ref="c869b6bd-6c90-4194-8664-fa8b57357ff1">950</columnRef>
+          <columnRef ref="4db0a4db-709c-4c80-bc36-f043e8c49116">3</columnRef>
+          <columnRef ref="b1ac3bc7-04b1-41b4-b182-a4002da045c8">1</columnRef>
+        </record>
+        <record id="7e8bdcf4-e091-44d8-bfa0-1ce53fe1357c">
+          <columnRef ref="9b948a38-607b-4883-8ee6-bc44dc00a256">13</columnRef>
+          <columnRef ref="0f469616-6432-4a4d-9de5-a10e100668a4">7902</columnRef>
+          <columnRef ref="52e31885-3619-4185-9bcb-4e8f004a42ad">FORD</columnRef>
+          <columnRef ref="fbde8ebe-f1d0-4e41-82d3-92915baabdb5">4</columnRef>
+          <columnRef ref="bb508d71-e082-4aef-9ee0-b964a5fe16a0">1981-12-03</columnRef>
+          <columnRef ref="c869b6bd-6c90-4194-8664-fa8b57357ff1">3000</columnRef>
+          <columnRef ref="4db0a4db-709c-4c80-bc36-f043e8c49116">2</columnRef>
+          <columnRef ref="b1ac3bc7-04b1-41b4-b182-a4002da045c8">1</columnRef>
+        </record>
+        <record id="00c31653-d729-4e3d-ba18-d27f5632721c">
+          <columnRef ref="9b948a38-607b-4883-8ee6-bc44dc00a256">14</columnRef>
+          <columnRef ref="0f469616-6432-4a4d-9de5-a10e100668a4">7934</columnRef>
+          <columnRef ref="52e31885-3619-4185-9bcb-4e8f004a42ad">MILLER</columnRef>
+          <columnRef ref="fbde8ebe-f1d0-4e41-82d3-92915baabdb5">7</columnRef>
+          <columnRef ref="bb508d71-e082-4aef-9ee0-b964a5fe16a0">1982-01-23</columnRef>
+          <columnRef ref="c869b6bd-6c90-4194-8664-fa8b57357ff1">1300</columnRef>
+          <columnRef ref="4db0a4db-709c-4c80-bc36-f043e8c49116">1</columnRef>
+          <columnRef ref="b1ac3bc7-04b1-41b4-b182-a4002da045c8">1</columnRef>
+        </record>
+      </tableRef>
+    </dataSet>
+  </dataSets>
+  <view:diagramPresentations xmlns:view="http://jiemamy.org/xml/ns/view">
+    <view:diagramPresentation id="fec2a389-88e3-4018-82c3-2595f765fd11">
+      <name>default</name>
+      <view:mode>PHYSICAL</view:mode>
+      <view:level>ATTRTYPE</view:level>
+      <view:nodeProfiles>
+        <view:nodeProfile id="88024377-86f7-4f6c-ad73-9547fa07bbdb">
+          <view:nodeObjectRef ref="b0eb61af-8f86-47ab-bde4-bc4fc9bdc47a"/>
+          <view:boundary height="-1" width="-1" x="79" y="159"/>
+        </view:nodeProfile>
+        <view:nodeProfile id="7fbfe69b-6562-4c95-beb2-116329171e5f">
+          <view:nodeObjectRef ref="d492ab23-b213-4cb3-bc50-3c865eb1b59d"/>
+          <view:boundary height="-1" width="-1" x="441" y="114"/>
+        </view:nodeProfile>
+      </view:nodeProfiles>
+      <view:connectionProfiles>
+        <view:connectionProfile id="d99ecf79-d065-48ce-bff8-9e0f83e4ffad">
+          <view:connectionObjectRef ref="441c5fe6-08ba-49ba-8ca7-3e5cc9e00c97"/>
+        </view:connectionProfile>
+      </view:connectionProfiles>
+    </view:diagramPresentation>
+  </view:diagramPresentations>
+</jiemamy>
