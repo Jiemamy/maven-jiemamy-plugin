@@ -43,6 +43,7 @@ import javassist.NotFoundException;
 
 import org.apache.maven.plugin.MojoExecutionException;
 
+import org.jiemamy.DiagramFacet;
 import org.jiemamy.JiemamyContext;
 import org.jiemamy.SqlFacet;
 import org.jiemamy.composer.ExportConfig;
@@ -106,8 +107,8 @@ public class ExportMojo extends AbstractJiemamyMojo {
 			FileInputStream inputStream = new FileInputStream(inputFile);
 			
 			getLog().info("Serializing stream to model.");
-			JiemamyContext context = newJiemamyContext();
-			context = context.findSerializer().deserialize(inputStream, SqlFacet.PROVIDER);
+			JiemamyContext context =
+					JiemamyContext.findSerializer().deserialize(inputStream, SqlFacet.PROVIDER, DiagramFacet.PROVIDER);
 			getLog().debug(context.toString());
 			
 			if (exporterClass == null) {

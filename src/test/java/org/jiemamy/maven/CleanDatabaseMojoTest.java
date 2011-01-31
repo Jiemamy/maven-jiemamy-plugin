@@ -23,7 +23,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * {@link JiemamyMojo}のテストクラス。
+ * {@link CleanMojo}のテストクラス。
  * 
  * @author daisuke
  * @version $Id: CleanDatabaseMojoTest.java 3630 2009-09-20 16:32:15Z daisuke_m $

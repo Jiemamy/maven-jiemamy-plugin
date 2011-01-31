@@ -139,7 +139,7 @@ public class ImportMojo extends AbstractJiemamyMojo {
 			DatabaseImporter databaseImporter = new DatabaseImporter();
 			databaseImporter.importModel(context, config);
 			
-			context.findSerializer().serialize(context, new FileOutputStream(outputFile));
+			JiemamyContext.findSerializer().serialize(context, new FileOutputStream(outputFile));
 		} catch (ImportException e) {
 			throw new MojoExecutionException("", e);
 		} catch (InstantiationException e) {

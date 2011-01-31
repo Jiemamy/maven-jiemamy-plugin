@@ -15,7 +15,6 @@
           <name>ID</name>
           <logicalName>従業員ID</logicalName>
           <description/>
-          <defaultValue/>
           <dataType class="org.jiemamy.model.datatype.DefaultTypeVariant">
             <typeCategory>INTEGER</typeCategory>
             <typeName>INTEGER</typeName>
@@ -23,12 +22,12 @@
               <parameter key="serial">true</parameter>
             </parameters>
           </dataType>
+          <defaultValue/>
         </column>
         <column id="3c49ec69-e61c-4dbf-bfd9-63e2d70cddb4" class="org.jiemamy.model.column.DefaultColumnModel">
           <name>EMP_NO</name>
           <logicalName>従業員番号</logicalName>
           <description/>
-          <defaultValue/>
           <dataType class="org.jiemamy.model.datatype.DefaultTypeVariant">
             <typeCategory>INTEGER</typeCategory>
             <typeName>INTEGER</typeName>
@@ -36,12 +35,12 @@
               <parameter key="serial">false</parameter>
             </parameters>
           </dataType>
+          <defaultValue/>
         </column>
         <column id="fb4f9564-90d8-47e3-ada9-bc10cb38943d" class="org.jiemamy.model.column.DefaultColumnModel">
           <name>EMP_NAME</name>
           <logicalName>従業員名</logicalName>
           <description/>
-          <defaultValue>no name</defaultValue>
           <dataType class="org.jiemamy.model.datatype.DefaultTypeVariant">
             <typeCategory>VARCHAR</typeCategory>
             <typeName>VARCHAR</typeName>
@@ -49,12 +48,12 @@
               <parameter key="size">64</parameter>
             </parameters>
           </dataType>
+          <defaultValue>no name</defaultValue>
         </column>
         <column id="0c1c11c7-2a71-4be5-95b2-6cd0a7c5001c" class="org.jiemamy.model.column.DefaultColumnModel">
           <name>MGR_ID</name>
           <logicalName>上司ID</logicalName>
           <description/>
-          <defaultValue/>
           <dataType class="org.jiemamy.model.datatype.DefaultTypeVariant">
             <typeCategory>INTEGER</typeCategory>
             <typeName>INTEGER</typeName>
@@ -62,22 +61,22 @@
               <parameter key="serial">false</parameter>
             </parameters>
           </dataType>
+          <defaultValue/>
         </column>
         <column id="7f10c374-e8e4-452a-9359-85a42496ea28" class="org.jiemamy.model.column.DefaultColumnModel">
           <name>HIREDATE</name>
           <logicalName/>
           <description/>
-          <defaultValue/>
           <dataType class="org.jiemamy.model.datatype.DefaultTypeVariant">
             <typeCategory>DATE</typeCategory>
             <typeName>DATE</typeName>
           </dataType>
+          <defaultValue/>
         </column>
         <column id="0cace5ca-e379-4598-a66a-84a4ce6830cd" class="org.jiemamy.model.column.DefaultColumnModel">
           <name>SAL</name>
           <logicalName/>
           <description/>
-          <defaultValue/>
           <dataType class="org.jiemamy.model.datatype.DefaultTypeVariant">
             <typeCategory>NUMERIC</typeCategory>
             <typeName>NUMERIC</typeName>
@@ -86,12 +85,12 @@
               <parameter key="scale">2</parameter>
             </parameters>
           </dataType>
+          <defaultValue/>
         </column>
         <column id="95925a02-d629-4c20-a676-621e4397d123" class="org.jiemamy.model.column.DefaultColumnModel">
           <name>DEPT_ID</name>
           <logicalName/>
           <description/>
-          <defaultValue/>
           <dataType class="org.jiemamy.model.datatype.DefaultTypeVariant">
             <typeCategory>INTEGER</typeCategory>
             <typeName>INTEGER</typeName>
@@ -99,6 +98,7 @@
               <parameter key="serial">false</parameter>
             </parameters>
           </dataType>
+          <defaultValue/>
         </column>
       </columns>
       <constraints>
@@ -149,7 +149,6 @@
           <name>ID</name>
           <logicalName>部署ID</logicalName>
           <description/>
-          <defaultValue/>
           <dataType class="org.jiemamy.model.datatype.DefaultTypeVariant">
             <typeCategory>INTEGER</typeCategory>
             <typeName>INTEGER</typeName>
@@ -158,12 +157,12 @@
               <parameter key="size">0</parameter>
             </parameters>
           </dataType>
+          <defaultValue/>
         </column>
         <column id="638e9886-2fb5-440b-85bd-bee4a2c8729f" class="org.jiemamy.model.column.DefaultColumnModel">
           <name>DEPT_NO</name>
           <logicalName>部署番号</logicalName>
           <description/>
-          <defaultValue/>
           <dataType class="org.jiemamy.model.datatype.DefaultTypeVariant">
             <typeCategory>INTEGER</typeCategory>
             <typeName>INTEGER</typeName>
@@ -171,12 +170,12 @@
               <parameter key="serial">false</parameter>
             </parameters>
           </dataType>
+          <defaultValue/>
         </column>
         <column id="ed700b79-3501-442c-9dbc-9d20d28d3e81" class="org.jiemamy.model.column.DefaultColumnModel">
           <name>DEPT_NAME</name>
           <logicalName>部署名</logicalName>
           <description/>
-          <defaultValue/>
           <dataType class="org.jiemamy.model.datatype.DefaultTypeVariant">
             <typeCategory>VARCHAR</typeCategory>
             <typeName>VARCHAR</typeName>
@@ -184,12 +183,12 @@
               <parameter key="size">20</parameter>
             </parameters>
           </dataType>
+          <defaultValue/>
         </column>
         <column id="ff635fe5-efbf-4ae6-9f03-59a17dc8f46a" class="org.jiemamy.model.column.DefaultColumnModel">
           <name>LOC</name>
           <logicalName>ロケーション</logicalName>
           <description/>
-          <defaultValue>secret</defaultValue>
           <dataType class="org.jiemamy.model.datatype.DefaultTypeVariant">
             <typeCategory>VARCHAR</typeCategory>
             <typeName>VARCHAR</typeName>
@@ -197,6 +196,7 @@
               <parameter key="size">20</parameter>
             </parameters>
           </dataType>
+          <defaultValue>secret</defaultValue>
         </column>
       </columns>
       <constraints>
