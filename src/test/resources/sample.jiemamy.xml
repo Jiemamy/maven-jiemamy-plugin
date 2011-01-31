@@ -15,7 +15,7 @@
           <name>ID</name>
           <logicalName>従業員ID</logicalName>
           <description/>
-          <dataType class="org.jiemamy.model.datatype.DefaultTypeVariant">
+          <dataType class="org.jiemamy.model.datatype.DefaultDataType">
             <typeCategory>INTEGER</typeCategory>
             <typeName>INTEGER</typeName>
             <parameters>
@@ -28,7 +28,7 @@
           <name>EMP_NO</name>
           <logicalName>従業員番号</logicalName>
           <description/>
-          <dataType class="org.jiemamy.model.datatype.DefaultTypeVariant">
+          <dataType class="org.jiemamy.model.datatype.DefaultDataType">
             <typeCategory>INTEGER</typeCategory>
             <typeName>INTEGER</typeName>
             <parameters>
@@ -41,7 +41,7 @@
           <name>EMP_NAME</name>
           <logicalName>従業員名</logicalName>
           <description/>
-          <dataType class="org.jiemamy.model.datatype.DefaultTypeVariant">
+          <dataType class="org.jiemamy.model.datatype.DefaultDataType">
             <typeCategory>VARCHAR</typeCategory>
             <typeName>VARCHAR</typeName>
             <parameters>
@@ -54,7 +54,7 @@
           <name>MGR_ID</name>
           <logicalName>上司ID</logicalName>
           <description/>
-          <dataType class="org.jiemamy.model.datatype.DefaultTypeVariant">
+          <dataType class="org.jiemamy.model.datatype.DefaultDataType">
             <typeCategory>INTEGER</typeCategory>
             <typeName>INTEGER</typeName>
             <parameters>
@@ -67,7 +67,7 @@
           <name>HIREDATE</name>
           <logicalName/>
           <description/>
-          <dataType class="org.jiemamy.model.datatype.DefaultTypeVariant">
+          <dataType class="org.jiemamy.model.datatype.DefaultDataType">
             <typeCategory>DATE</typeCategory>
             <typeName>DATE</typeName>
           </dataType>
@@ -77,7 +77,7 @@
           <name>SAL</name>
           <logicalName/>
           <description/>
-          <dataType class="org.jiemamy.model.datatype.DefaultTypeVariant">
+          <dataType class="org.jiemamy.model.datatype.DefaultDataType">
             <typeCategory>NUMERIC</typeCategory>
             <typeName>NUMERIC</typeName>
             <parameters>
@@ -91,7 +91,7 @@
           <name>DEPT_ID</name>
           <logicalName/>
           <description/>
-          <dataType class="org.jiemamy.model.datatype.DefaultTypeVariant">
+          <dataType class="org.jiemamy.model.datatype.DefaultDataType">
             <typeCategory>INTEGER</typeCategory>
             <typeName>INTEGER</typeName>
             <parameters>
@@ -149,7 +149,7 @@
           <name>ID</name>
           <logicalName>部署ID</logicalName>
           <description/>
-          <dataType class="org.jiemamy.model.datatype.DefaultTypeVariant">
+          <dataType class="org.jiemamy.model.datatype.DefaultDataType">
             <typeCategory>INTEGER</typeCategory>
             <typeName>INTEGER</typeName>
             <parameters>
@@ -163,7 +163,7 @@
           <name>DEPT_NO</name>
           <logicalName>部署番号</logicalName>
           <description/>
-          <dataType class="org.jiemamy.model.datatype.DefaultTypeVariant">
+          <dataType class="org.jiemamy.model.datatype.DefaultDataType">
             <typeCategory>INTEGER</typeCategory>
             <typeName>INTEGER</typeName>
             <parameters>
@@ -176,7 +176,7 @@
           <name>DEPT_NAME</name>
           <logicalName>部署名</logicalName>
           <description/>
-          <dataType class="org.jiemamy.model.datatype.DefaultTypeVariant">
+          <dataType class="org.jiemamy.model.datatype.DefaultDataType">
             <typeCategory>VARCHAR</typeCategory>
             <typeName>VARCHAR</typeName>
             <parameters>
@@ -189,7 +189,7 @@
           <name>LOC</name>
           <logicalName>ロケーション</logicalName>
           <description/>
-          <dataType class="org.jiemamy.model.datatype.DefaultTypeVariant">
+          <dataType class="org.jiemamy.model.datatype.DefaultDataType">
             <typeCategory>VARCHAR</typeCategory>
             <typeName>VARCHAR</typeName>
             <parameters>
