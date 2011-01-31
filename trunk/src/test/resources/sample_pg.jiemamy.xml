@@ -1,0 +1,271 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jiemamy xmlns="http://jiemamy.org/xml/ns/core" version="0.3.0-SNAPSHOT">
+  <metadata class="org.jiemamy.DefaultContextMetadata">
+    <dialect>org.jiemamy.dialect.postgresql.PostgresqlDialect</dialect>
+    <schemaName>FOO</schemaName>
+    <description>Jiemamyテストモデル1</description>
+  </metadata>
+  <dbobjects>
+    <table id="31a5f3dc-7cd3-4d6e-96c3-018043044822" class="org.jiemamy.model.table.DefaultTableModel">
+      <name>T_EMP</name>
+      <logicalName>従業員</logicalName>
+      <description>従業員マスタです。</description>
+      <columns>
+        <column id="7df42c9a-1aa9-4b16-b7cd-cc207df48773" class="org.jiemamy.model.column.DefaultColumnModel">
+          <name>ID</name>
+          <logicalName>従業員ID</logicalName>
+          <description/>
+          <dataType class="org.jiemamy.model.datatype.DefaultTypeVariant">
+            <typeCategory>INTEGER</typeCategory>
+            <typeName>INTEGER</typeName>
+            <parameters>
+              <parameter key="serial">true</parameter>
+            </parameters>
+          </dataType>
+          <defaultValue/>
+        </column>
+        <column id="3c49ec69-e61c-4dbf-bfd9-63e2d70cddb4" class="org.jiemamy.model.column.DefaultColumnModel">
+          <name>EMP_NO</name>
+          <logicalName>従業員番号</logicalName>
+          <description/>
+          <dataType class="org.jiemamy.model.datatype.DefaultTypeVariant">
+            <typeCategory>INTEGER</typeCategory>
+            <typeName>INTEGER</typeName>
+            <parameters>
+              <parameter key="serial">false</parameter>
+            </parameters>
+          </dataType>
+          <defaultValue/>
+        </column>
+        <column id="fb4f9564-90d8-47e3-ada9-bc10cb38943d" class="org.jiemamy.model.column.DefaultColumnModel">
+          <name>EMP_NAME</name>
+          <logicalName>従業員名</logicalName>
+          <description/>
+          <dataType class="org.jiemamy.model.datatype.DefaultTypeVariant">
+            <typeCategory>VARCHAR</typeCategory>
+            <typeName>VARCHAR</typeName>
+            <parameters>
+              <parameter key="size">64</parameter>
+            </parameters>
+          </dataType>
+          <defaultValue>no name</defaultValue>
+        </column>
+        <column id="0c1c11c7-2a71-4be5-95b2-6cd0a7c5001c" class="org.jiemamy.model.column.DefaultColumnModel">
+          <name>MGR_ID</name>
+          <logicalName>上司ID</logicalName>
+          <description/>
+          <dataType class="org.jiemamy.model.datatype.DefaultTypeVariant">
+            <typeCategory>INTEGER</typeCategory>
+            <typeName>INTEGER</typeName>
+            <parameters>
+              <parameter key="serial">false</parameter>
+            </parameters>
+          </dataType>
+          <defaultValue/>
+        </column>
+        <column id="7f10c374-e8e4-452a-9359-85a42496ea28" class="org.jiemamy.model.column.DefaultColumnModel">
+          <name>HIREDATE</name>
+          <logicalName/>
+          <description/>
+          <dataType class="org.jiemamy.model.datatype.DefaultTypeVariant">
+            <typeCategory>DATE</typeCategory>
+            <typeName>DATE</typeName>
+          </dataType>
+          <defaultValue/>
+        </column>
+        <column id="0cace5ca-e379-4598-a66a-84a4ce6830cd" class="org.jiemamy.model.column.DefaultColumnModel">
+          <name>SAL</name>
+          <logicalName/>
+          <description/>
+          <dataType class="org.jiemamy.model.datatype.DefaultTypeVariant">
+            <typeCategory>NUMERIC</typeCategory>
+            <typeName>NUMERIC</typeName>
+            <parameters>
+              <parameter key="precision">7</parameter>
+              <parameter key="scale">2</parameter>
+            </parameters>
+          </dataType>
+          <defaultValue/>
+        </column>
+        <column id="95925a02-d629-4c20-a676-621e4397d123" class="org.jiemamy.model.column.DefaultColumnModel">
+          <name>DEPT_ID</name>
+          <logicalName/>
+          <description/>
+          <dataType class="org.jiemamy.model.datatype.DefaultTypeVariant">
+            <typeCategory>INTEGER</typeCategory>
+            <typeName>INTEGER</typeName>
+            <parameters>
+              <parameter key="serial">false</parameter>
+            </parameters>
+          </dataType>
+          <defaultValue/>
+        </column>
+      </columns>
+      <constraints>
+        <primaryKey id="3b3407b6-9e5a-4557-957e-46418ae6df1c" class="org.jiemamy.model.constraint.DefaultPrimaryKeyConstraintModel">
+          <keyColumns>
+            <columnRef ref="7df42c9a-1aa9-4b16-b7cd-cc207df48773"/>
+          </keyColumns>
+        </primaryKey>
+        <foreignKey id="d75beaf7-07e7-4a92-9d1f-f607f98dc194" class="org.jiemamy.model.constraint.DefaultForeignKeyConstraintModel">
+          <name/>
+          <keyColumns>
+            <columnRef ref="0c1c11c7-2a71-4be5-95b2-6cd0a7c5001c"/>
+          </keyColumns>
+          <referenceColumns>
+            <columnRef ref="7df42c9a-1aa9-4b16-b7cd-cc207df48773"/>
+          </referenceColumns>
+        </foreignKey>
+        <foreignKey id="19ade70c-6f87-4bca-b68b-f7d4c4bf61f6" class="org.jiemamy.model.constraint.DefaultForeignKeyConstraintModel">
+          <name/>
+          <keyColumns>
+            <columnRef ref="95925a02-d629-4c20-a676-621e4397d123"/>
+          </keyColumns>
+          <referenceColumns>
+            <columnRef ref="b65556fe-0645-4321-912b-98d2f9d4298c"/>
+          </referenceColumns>
+        </foreignKey>
+        <notNull id="b135fcd3-1102-4998-b717-d69bec1e4e10" class="org.jiemamy.model.constraint.DefaultNotNullConstraintModel">
+          <columnRef ref="3c49ec69-e61c-4dbf-bfd9-63e2d70cddb4"/>
+        </notNull>
+        <notNull id="f7bc7942-bfc2-4e70-8cb2-809b1cf7f24e" class="org.jiemamy.model.constraint.DefaultNotNullConstraintModel">
+          <columnRef ref="fb4f9564-90d8-47e3-ada9-bc10cb38943d"/>
+        </notNull>
+        <notNull id="2861e1bd-96b9-4b70-bce7-7f2de24d7561" class="org.jiemamy.model.constraint.DefaultNotNullConstraintModel">
+          <columnRef ref="7f10c374-e8e4-452a-9359-85a42496ea28"/>
+        </notNull>
+        <check id="8b32bb94-4df2-4959-afc8-435091818b2a" class="org.jiemamy.model.constraint.DefaultCheckConstraintModel">
+          <name>POSITIVE_SAL</name>
+          <expression>SAL &gt;= 0</expression>
+        </check>
+      </constraints>
+    </table>
+    <table id="7674b183-60de-4b3f-b601-73ae52209f63" class="org.jiemamy.model.table.DefaultTableModel">
+      <name>T_DEPT</name>
+      <logicalName>部署マスタです。</logicalName>
+      <description/>
+      <columns>
+        <column id="b65556fe-0645-4321-912b-98d2f9d4298c" class="org.jiemamy.model.column.DefaultColumnModel">
+          <name>ID</name>
+          <logicalName>部署ID</logicalName>
+          <description/>
+          <dataType class="org.jiemamy.model.datatype.DefaultTypeVariant">
+            <typeCategory>INTEGER</typeCategory>
+            <typeName>INTEGER</typeName>
+          </dataType>
+          <defaultValue/>
+        </column>
+        <column id="638e9886-2fb5-440b-85bd-bee4a2c8729f" class="org.jiemamy.model.column.DefaultColumnModel">
+          <name>DEPT_NO</name>
+          <logicalName>部署番号</logicalName>
+          <description/>
+          <dataType class="org.jiemamy.model.datatype.DefaultTypeVariant">
+            <typeCategory>INTEGER</typeCategory>
+            <typeName>INTEGER</typeName>
+            <parameters>
+              <parameter key="serial">false</parameter>
+            </parameters>
+          </dataType>
+          <defaultValue/>
+        </column>
+        <column id="ed700b79-3501-442c-9dbc-9d20d28d3e81" class="org.jiemamy.model.column.DefaultColumnModel">
+          <name>DEPT_NAME</name>
+          <logicalName>部署名</logicalName>
+          <description/>
+          <dataType class="org.jiemamy.model.datatype.DefaultTypeVariant">
+            <typeCategory>VARCHAR</typeCategory>
+            <typeName>VARCHAR</typeName>
+            <parameters>
+              <parameter key="size">20</parameter>
+            </parameters>
+          </dataType>
+          <defaultValue/>
+        </column>
+        <column id="ff635fe5-efbf-4ae6-9f03-59a17dc8f46a" class="org.jiemamy.model.column.DefaultColumnModel">
+          <name>LOC</name>
+          <logicalName>ロケーション</logicalName>
+          <description/>
+          <dataType class="org.jiemamy.model.datatype.DefaultTypeVariant">
+            <typeCategory>VARCHAR</typeCategory>
+            <typeName>VARCHAR</typeName>
+            <parameters>
+              <parameter key="size">20</parameter>
+            </parameters>
+          </dataType>
+          <defaultValue>secret</defaultValue>
+        </column>
+      </columns>
+      <constraints>
+        <primaryKey id="e085d0af-e480-4247-9b47-5e9b8c2f0667" class="org.jiemamy.model.constraint.DefaultPrimaryKeyConstraintModel">
+          <name>dept_pkey</name>
+          <keyColumns>
+            <columnRef ref="b65556fe-0645-4321-912b-98d2f9d4298c"/>
+          </keyColumns>
+        </primaryKey>
+        <notNull id="b4f3a218-a00c-40ac-a711-22614c9046fb" class="org.jiemamy.model.constraint.DefaultNotNullConstraintModel">
+          <columnRef ref="ed700b79-3501-442c-9dbc-9d20d28d3e81"/>
+        </notNull>
+        <notNull id="1433d716-b504-4e9a-baa4-0a49794fe0f9" class="org.jiemamy.model.constraint.DefaultNotNullConstraintModel">
+          <columnRef ref="638e9886-2fb5-440b-85bd-bee4a2c8729f"/>
+        </notNull>
+      </constraints>
+    </table>
+    <view id="d890f69c-d854-4a79-85b8-30615f754177" class="org.jiemamy.model.view.DefaultViewModel">
+      <name>V_HIGH_SAL_EMP</name>
+      <logicalName>高給取り</logicalName>
+      <description/>
+      <definition>SELECT * FROM T_EMP WHERE SAL &gt; 2000;</definition>
+    </view>
+  </dbobjects>
+  <dataSets/>
+  <diagram:diagrams xmlns:diagram="http://jiemamy.org/xml/ns/diagram">
+    <diagram:diagram id="aade498a-7521-48e6-a566-8382f3ce1be9" class="org.jiemamy.model.DefaultDiagramModel">
+      <diagram:name>default</diagram:name>
+      <diagram:level>ATTRTYPE</diagram:level>
+      <diagram:mode>PHYSICAL</diagram:mode>
+      <diagram:nodes>
+        <diagram:node id="b283bb1c-3584-4330-802f-fcfba3eec07e" class="org.jiemamy.model.DefaultDatabaseObjectNodeModel">
+          <diagram:core ref="d890f69c-d854-4a79-85b8-30615f754177"/>
+          <diagram:boundary x="406" y="292" width="-1" height="-1"/>
+        </diagram:node>
+        <diagram:node id="3a00e878-f7f8-48ad-b98b-267a4c671e8c" class="org.jiemamy.model.DefaultDatabaseObjectNodeModel">
+          <diagram:core ref="31a5f3dc-7cd3-4d6e-96c3-018043044822"/>
+          <diagram:boundary x="386" y="100" width="-1" height="-1"/>
+        </diagram:node>
+        <diagram:node id="47bc4843-f568-4fcf-ba98-3869f372fa02" class="org.jiemamy.model.DefaultDatabaseObjectNodeModel">
+          <diagram:core ref="7674b183-60de-4b3f-b601-73ae52209f63"/>
+          <diagram:boundary x="35" y="190" width="-1" height="-1"/>
+        </diagram:node>
+      </diagram:nodes>
+      <diagram:connections>
+        <diagram:connection id="b4143e94-674a-4e6c-9112-0c55cddf20d4" class="org.jiemamy.model.DefaultConnectionModel">
+          <diagram:core ref="19ade70c-6f87-4bca-b68b-f7d4c4bf61f6"/>
+          <diagram:source ref="3a00e878-f7f8-48ad-b98b-267a4c671e8c"/>
+          <diagram:target ref="47bc4843-f568-4fcf-ba98-3869f372fa02"/>
+          <diagram:bendpoints/>
+        </diagram:connection>
+        <diagram:connection id="3da214b7-87a1-4bce-b8b0-3c627455d2d5" class="org.jiemamy.model.DefaultConnectionModel">
+          <diagram:core ref="d75beaf7-07e7-4a92-9d1f-f607f98dc194"/>
+          <diagram:source ref="3a00e878-f7f8-48ad-b98b-267a4c671e8c"/>
+          <diagram:target ref="3a00e878-f7f8-48ad-b98b-267a4c671e8c"/>
+          <diagram:bendpoints>
+            <diagram:bendpoint x="336" y="100"/>
+            <diagram:bendpoint x="386" y="50"/>
+          </diagram:bendpoints>
+        </diagram:connection>
+      </diagram:connections>
+    </diagram:diagram>
+  </diagram:diagrams>
+  <sql:sqls xmlns:sql="http://jiemamy.org/xml/ns/sql">
+    <sql:aroundScript id="3ff90ce5-92fe-45f3-88dc-0e5189736db3" class="org.jiemamy.model.script.DefaultAroundScriptModel">
+      <sql:core ref="31a5f3dc-7cd3-4d6e-96c3-018043044822"/>
+      <sql:script position="END" engine="org.jiemamy.script.PlainScriptEngine">/* test end script */</sql:script>
+      <sql:script position="BEGIN" engine="org.jiemamy.script.PlainScriptEngine"></sql:script>
+    </sql:aroundScript>
+    <sql:aroundScript id="7d6928ca-c906-4a54-9474-c346adf3bd79" class="org.jiemamy.model.script.DefaultAroundScriptModel">
+      <sql:core ref="7674b183-60de-4b3f-b601-73ae52209f63"/>
+      <sql:script position="END" engine="org.jiemamy.script.PlainScriptEngine"></sql:script>
+      <sql:script position="BEGIN" engine="org.jiemamy.script.PlainScriptEngine">/* test begin script */</sql:script>
+    </sql:aroundScript>
+  </sql:sqls>
+</jiemamy>

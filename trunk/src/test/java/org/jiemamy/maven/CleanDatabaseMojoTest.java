@@ -18,9 +18,17 @@
  */
 package org.jiemamy.maven;
 
+import java.lang.reflect.Field;
+import java.sql.Connection;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import org.jiemamy.test.AbstractDatabaseTest;
+import org.jiemamy.utils.sql.SqlExecutor;
 
 /**
  * {@link CleanMojo}のテストクラス。
@@ -29,10 +37,12 @@ import org.junit.Test;
  * @version $Id: CleanDatabaseMojoTest.java 3630 2009-09-20 16:32:15Z daisuke_m $
  * @since 0.2
  */
-public class CleanDatabaseMojoTest {
+public class CleanDatabaseMojoTest extends AbstractDatabaseTest {
 	
 	/** テスト対象 */
 	private CleanMojo cleanDatabaseMojo;
+	
+	private static Logger logger = LoggerFactory.getLogger(CleanDatabaseMojoTest.class);
 	
 
 	/**
@@ -41,20 +51,26 @@ public class CleanDatabaseMojoTest {
 	 * @throws Exception 例外が発生した場合
 	 */
 	@Before
+	@Override
 	public void setUp() throws Exception {
+		super.setUp();
 		cleanDatabaseMojo = new CleanMojo();
 		
-//		HashMap<String, Object> parameter = new HashMap<String, Object>();
-//		parameter.put(SqlExporter.OUTPUT_FILE, outputFile);
-//		parameter.put(SqlExporter.OVERWRITE, true);
-//		
-//		Field parameterField = JiemamyMojo.class.getDeclaredField("parameter");
-//		parameterField.setAccessible(true);
-//		parameterField.set(cleanDatabaseMojo, parameter);
-//		
-//		Field inputFileField = JiemamyMojo.class.getDeclaredField("inputFile");
-//		inputFileField.setAccessible(true);
-//		inputFileField.set(cleanDatabaseMojo, inputFile);
+		Field usernameField = CleanMojo.class.getDeclaredField("username");
+		usernameField.setAccessible(true);
+		usernameField.set(cleanDatabaseMojo, getUsername());
+		
+		Field passwordField = CleanMojo.class.getDeclaredField("password");
+		passwordField.setAccessible(true);
+		passwordField.set(cleanDatabaseMojo, getPassword());
+		
+		Field driverField = CleanMojo.class.getDeclaredField("driver");
+		driverField.setAccessible(true);
+		driverField.set(cleanDatabaseMojo, getDriverClassName());
+		
+		Field uriField = CleanMojo.class.getDeclaredField("uri");
+		uriField.setAccessible(true);
+		uriField.set(cleanDatabaseMojo, getConnectionUri());
 	}
 	
 	/**
@@ -74,11 +90,22 @@ public class CleanDatabaseMojoTest {
 	 */
 	@Test
 	public void test01_DBがクリーンされる() throws Exception {
+		Connection connection = getConnection();
 		
-		// TODO CREATE TABLE
+		SqlExecutor ex = new SqlExecutor(connection);
+		ex.execute("CREATE TABLE XYZZY (ID VARCHAR(32) PRIMARY KEY);");
+		connection.close();
 		
-//		cleanDatabaseMojo.execute();
+		cleanDatabaseMojo.execute();
 		
 		// TODO assertion
+	}
+	
+	@Override
+	protected String getPropertiesFilePath(String hostName) {
+		if (hostName.equals("griffon.jiemamy.org")) {
+			return "/mysql_griffon.properties";
+		}
+		return "/mysql_local.properties";
 	}
 }
