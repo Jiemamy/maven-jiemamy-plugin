@@ -34,6 +34,7 @@ import java.util.Properties;
 import org.apache.commons.dbutils.DbUtils;
 import org.apache.maven.plugin.MojoExecutionException;
 
+import org.jiemamy.DiagramFacet;
 import org.jiemamy.JiemamyContext;
 import org.jiemamy.SqlFacet;
 import org.jiemamy.composer.importer.DefaultDatabaseImportConfig;
@@ -119,7 +120,7 @@ public class ExecuteMojo extends AbstractJiemamyMojo {
 	
 
 	/**
-	 * {@link RootModel}をよりSQLを生成し、DatabaseにSQLを適用する。
+	 * {@link JiemamyContext}をよりSQLを生成し、DatabaseにSQLを適用する。
 	 */
 	public void execute() throws MojoExecutionException {
 		getLog().info(">>>> Starting maven-jiemamy-plugin...");
@@ -129,8 +130,8 @@ public class ExecuteMojo extends AbstractJiemamyMojo {
 			FileInputStream inputStream = new FileInputStream(inputFile);
 			
 			getLog().info("Serializing stream to model.");
-			JiemamyContext context = newJiemamyContext();
-			context = context.findSerializer().deserialize(inputStream, SqlFacet.PROVIDER);
+			JiemamyContext context =
+					JiemamyContext.findSerializer().deserialize(inputStream, SqlFacet.PROVIDER, DiagramFacet.PROVIDER);
 			getLog().debug(context.toString());
 			
 			getLog().info("Exec Sql...");

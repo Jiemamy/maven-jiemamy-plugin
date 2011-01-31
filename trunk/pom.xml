@@ -101,6 +101,11 @@
     </dependency>
     <dependency>
       <groupId>org.jiemamy</groupId>
+      <artifactId>jiemamy-diagram</artifactId>
+      <version>0.3.0-SNAPSHOT</version>
+    </dependency>
+    <dependency>
+      <groupId>org.jiemamy</groupId>
       <artifactId>jiemamy-sql</artifactId>
       <version>0.3.0-SNAPSHOT</version>
     </dependency>
