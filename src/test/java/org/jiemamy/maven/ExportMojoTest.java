@@ -43,7 +43,7 @@ import org.jiemamy.composer.exporter.SqlExporter;
 public class ExportMojoTest {
 	
 	/** テスト用入力ファイル */
-	private static final File INPUT_FILE = new File("src/test/resources/sample.jiemamy");
+	private static final File INPUT_FILE = new File("src/test/resources/sample.jiemamy.xml");
 	
 	/** テスト用出力ファイル */
 	private static final File OUTPUT_FILE = new File("target/testresult/sample.sql");

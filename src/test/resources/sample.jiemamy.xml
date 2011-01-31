@@ -224,7 +224,7 @@
   <dataSets/>
   <diagram:diagrams xmlns:diagram="http://jiemamy.org/xml/ns/diagram">
     <diagram:diagram id="aade498a-7521-48e6-a566-8382f3ce1be9" class="org.jiemamy.model.DefaultDiagramModel">
-      <name>default</name>
+      <diagram:name>default</diagram:name>
       <diagram:level>ATTRTYPE</diagram:level>
       <diagram:mode>PHYSICAL</diagram:mode>
       <diagram:nodes>
