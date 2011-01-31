@@ -20,11 +20,18 @@ package org.jiemamy.maven;
 
 import java.io.File;
 import java.lang.reflect.Field;
+import java.net.URL;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
+
+import org.jiemamy.DatabaseCleaner;
+import org.jiemamy.composer.importer.DefaultDatabaseImportConfig;
+import org.jiemamy.dialect.postgresql.PostgresqlDialect;
+import org.jiemamy.test.AbstractDatabaseTest;
 
 /**
  * {@link ExecuteMojo}のテストクラス。
@@ -33,22 +40,10 @@ import org.junit.Test;
  * @version $Id: ExecuteMojoTest.java 3662 2009-09-24 06:20:36Z yamkazu $
  * @since 0.3
  */
-public class ExecuteMojoTest {
-	
-	/** Database Username */
-	private static final String DB_USER = "postgres";
-	
-	/** Database Password */
-	private static final String DB_PASSWORD = "postgres";
-	
-	/** Database Url */
-	private static final String DB_URL = "jdbc:postgresql:test";
-	
-	/** Database Driver */
-	private static final String DB_DRIVER = "org.postgresql.Driver";
+public class ExecuteMojoTest extends AbstractDatabaseTest {
 	
 	/** テスト用入力ファイル */
-	private static final File inputFile = new File("src/test/resources/jiemamy.jer");
+	private static final File inputFile = new File("src/test/resources/sample_pg.jiemamy.xml");
 	
 	/** テスト対象 */
 	private ExecuteMojo executeMojo;
@@ -60,14 +55,17 @@ public class ExecuteMojoTest {
 	 * @throws Exception 例外が発生した場合
 	 */
 	@Before
+	@Override
 	public void setUp() throws Exception {
+		super.setUp();
 		executeMojo = new ExecuteMojo();
 		
-//		HashMap<String, Object> parameter = new HashMap<String, Object>();
-		
-//		Field parameterField = ExecuteMojo.class.getDeclaredField("parameter");
-//		parameterField.setAccessible(true);
-//		parameterField.set(executeMojo, parameter);
+		Map<String, Object> parameter = new HashMap<String, Object>();
+		parameter.put(ExecuteMojo.SCHEMA, false);
+		parameter.put(ExecuteMojo.DROP, false);
+		Field parameterField = ExecuteMojo.class.getDeclaredField("parameter");
+		parameterField.setAccessible(true);
+		parameterField.set(executeMojo, parameter);
 		
 		Field inputFileField = ExecuteMojo.class.getDeclaredField("inputFile");
 		inputFileField.setAccessible(true);
@@ -75,19 +73,19 @@ public class ExecuteMojoTest {
 		
 		Field driverField = ExecuteMojo.class.getDeclaredField("driver");
 		driverField.setAccessible(true);
-		driverField.set(executeMojo, DB_DRIVER);
+		driverField.set(executeMojo, getDriverClassName());
 		
 		Field uriField = ExecuteMojo.class.getDeclaredField("uri");
 		uriField.setAccessible(true);
-		uriField.set(executeMojo, DB_URL);
+		uriField.set(executeMojo, getConnectionUri());
 		
 		Field usernameFiled = ExecuteMojo.class.getDeclaredField("username");
 		usernameFiled.setAccessible(true);
-		usernameFiled.set(executeMojo, DB_USER);
+		usernameFiled.set(executeMojo, getUsername());
 		
 		Field passwordField = ExecuteMojo.class.getDeclaredField("password");
 		passwordField.setAccessible(true);
-		passwordField.set(executeMojo, DB_PASSWORD);
+		passwordField.set(executeMojo, getPassword());
 		
 	}
 	
@@ -108,10 +106,21 @@ public class ExecuteMojoTest {
 	 * @since 0.3
 	 */
 	@Test
-	@Ignore
 	public void test01_JiemamyModelからSQLを生成しDBに適用する() throws Exception {
-		// TODO 環境依存のテストのためいったんコメントアウト
-		// executeMojo.execute();
+		DefaultDatabaseImportConfig config = newDatabaseImportConfig(new PostgresqlDialect(), new URL[] {
+			new File("./src/test/resources/postgresql-8.3-603.jdbc3.jar").toURI().toURL()
+		});
+		new DatabaseCleaner().clean(config);
+		executeMojo.execute();
+		// TODO assertion
+	}
+	
+	@Override
+	protected String getPropertiesFilePath(String hostName) {
+		if (hostName.equals("griffon.jiemamy.org")) {
+			return "/postgresql_griffon.properties";
+		}
+		return "/postgresql_local.properties";
 	}
 	
 }

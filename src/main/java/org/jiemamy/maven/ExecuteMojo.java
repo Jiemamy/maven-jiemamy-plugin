@@ -57,13 +57,13 @@ import org.jiemamy.utils.sql.DriverUtil;
 public class ExecuteMojo extends AbstractJiemamyMojo {
 	
 	/** ConfigKey: 出力データセット番号 (Integer) */
-	private static final String DATA_SET_INDEX = "dataSetIndex";
+	public static final String DATA_SET_INDEX = "dataSetIndex";
 	
 	/** ConfigKey: DROP文を出力するかどうか (Boolean) */
-	private static final String DROP = "drop";
+	public static final String DROP = "drop";
 	
 	/** ConfigKey: DROP文を出力するかどうか (Boolean) */
-	private static final String SCHEMA = "schema";
+	public static final String SCHEMA = "schema";
 	
 	/**
 	 * Location of the input model file.
