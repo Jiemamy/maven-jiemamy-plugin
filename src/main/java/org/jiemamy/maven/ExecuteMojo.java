@@ -40,6 +40,7 @@ import org.jiemamy.SqlFacet;
 import org.jiemamy.composer.importer.DefaultDatabaseImportConfig;
 import org.jiemamy.dialect.Dialect;
 import org.jiemamy.dialect.EmitConfig;
+import org.jiemamy.model.ModelConsistencyException;
 import org.jiemamy.model.sql.SqlStatement;
 import org.jiemamy.serializer.SerializationException;
 import org.jiemamy.utils.sql.DriverNotFoundException;
@@ -142,6 +143,8 @@ public class ExecuteMojo extends AbstractJiemamyMojo {
 			throw new MojoExecutionException("can not found input file: " + inputFile.getName(), e);
 		} catch (SerializationException e) {
 			throw new MojoExecutionException("can not serialization jiemamy model.", e);
+		} catch (ModelConsistencyException e) {
+			throw new MojoExecutionException("can not emit SQL.", e);
 		} catch (ClassNotFoundException e) {
 			throw new MojoExecutionException("can not get Dialect from input file.", e);
 		}
