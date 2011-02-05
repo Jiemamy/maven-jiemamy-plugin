@@ -37,7 +37,7 @@ import org.apache.maven.plugin.MojoExecutionException;
 import org.jiemamy.DiagramFacet;
 import org.jiemamy.JiemamyContext;
 import org.jiemamy.SqlFacet;
-import org.jiemamy.composer.importer.DefaultDatabaseImportConfig;
+import org.jiemamy.composer.importer.SimpleDbImportConfig;
 import org.jiemamy.dialect.Dialect;
 import org.jiemamy.dialect.EmitConfig;
 import org.jiemamy.model.ModelConsistencyException;
@@ -161,7 +161,7 @@ public class ExecuteMojo extends AbstractJiemamyMojo {
 	 */
 	protected Connection getConnection() throws MojoExecutionException {
 		Connection connection = null;
-		DefaultDatabaseImportConfig config = new DefaultDatabaseImportConfig();
+		SimpleDbImportConfig config = new SimpleDbImportConfig();
 		config.setDriverClassName(driver);
 		config.setUsername(username);
 		config.setPassword(password);

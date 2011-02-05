@@ -28,10 +28,10 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import org.jiemamy.DatabaseCleaner;
-import org.jiemamy.composer.importer.DefaultDatabaseImportConfig;
+import org.jiemamy.composer.importer.SimpleDbImportConfig;
 import org.jiemamy.dialect.postgresql.PostgresqlDialect;
 import org.jiemamy.test.AbstractDatabaseTest;
+import org.jiemamy.utils.DbCleaner;
 
 /**
  * {@link ExecuteMojo}のテストクラス。
@@ -100,17 +100,17 @@ public class ExecuteMojoTest extends AbstractDatabaseTest {
 	}
 	
 	/**
-	 * JiemamyModelからSQLを生成しDBに適用する。
+	 * jiemamyファイルからSQLを生成しDBに適用する。
 	 * 
 	 * @throws Exception テストに失敗した場合
 	 * @since 0.3
 	 */
 	@Test
-	public void test01_JiemamyModelからSQLを生成しDBに適用する() throws Exception {
-		DefaultDatabaseImportConfig config = newDatabaseImportConfig(new PostgresqlDialect(), new URL[] {
+	public void test01_jiemamyファイルからSQLを生成しDBに適用する() throws Exception {
+		SimpleDbImportConfig config = newDatabaseImportConfig(new PostgresqlDialect(), new URL[] {
 			new File("./src/test/resources/postgresql-8.3-603.jdbc3.jar").toURI().toURL()
 		});
-		new DatabaseCleaner().clean(config);
+		DbCleaner.clean(config);
 		executeMojo.execute();
 		// TODO assertion
 	}

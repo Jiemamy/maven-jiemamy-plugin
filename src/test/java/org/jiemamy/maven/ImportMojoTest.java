@@ -46,14 +46,14 @@ public class ImportMojoTest extends AbstractMojoTestCase {
 	}
 	
 	/**
-	 * DBからimportを行いJiemamyModelを生成するテスト。
+	 * DBからimportを行いjiemamyファイルを生成するテスト。
 	 * 
 	 * @throws Exception importに失敗した場合
 	 * @since 0.3
 	 */
 	@Test
 	@Ignore
-	public void test01_DBからimportを行いJiemamyModelを生成する() throws Exception {
+	public void test01_DBからimportを行いjiemamyファイルを生成する() throws Exception {
 		// TODO とりあえずテストが失敗するのでコメントアウト
 //		File testPom = new File(getBasedir(), "src/test/resources/importmojo/pom.xml");
 //		ImportMojo mojo = (ImportMojo) lookupMojo("import", testPom);

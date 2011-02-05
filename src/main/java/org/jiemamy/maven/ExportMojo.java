@@ -49,7 +49,7 @@ import org.jiemamy.SqlFacet;
 import org.jiemamy.composer.ExportConfig;
 import org.jiemamy.composer.ExportException;
 import org.jiemamy.composer.Exporter;
-import org.jiemamy.composer.exporter.DefaultSqlExportConfig;
+import org.jiemamy.composer.exporter.SimpleSqlExportConfig;
 import org.jiemamy.composer.exporter.SqlExporter;
 import org.jiemamy.maven.generator.MethodCodeGenerator;
 import org.jiemamy.maven.generator.MethodCodeGeneratorFactory;
@@ -171,7 +171,7 @@ public class ExportMojo extends AbstractJiemamyMojo {
 	private void executeJiemamy(JiemamyContext context) throws ExportException {
 		getLog().info("Configure Exporter...");
 		SqlExporter exporter = new SqlExporter();
-		DefaultSqlExportConfig config = new DefaultSqlExportConfig();
+		SimpleSqlExportConfig config = new SimpleSqlExportConfig();
 		config.setOutputFile(new File((String) parameter.get(SqlExporter.OUTPUT_FILE)));
 		config.setOverwrite(Boolean.valueOf((String) parameter.get(SqlExporter.OVERWRITE)));
 		config.setEmitDropStatements(Boolean.valueOf((String) parameter.get(SqlExporter.DROP)));
