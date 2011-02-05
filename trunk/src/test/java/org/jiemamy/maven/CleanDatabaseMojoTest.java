@@ -24,8 +24,6 @@ import java.sql.Connection;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import org.jiemamy.test.AbstractDatabaseTest;
 import org.jiemamy.utils.sql.SqlExecutor;
@@ -41,8 +39,6 @@ public class CleanDatabaseMojoTest extends AbstractDatabaseTest {
 	
 	/** テスト対象 */
 	private CleanMojo cleanDatabaseMojo;
-	
-	private static Logger logger = LoggerFactory.getLogger(CleanDatabaseMojoTest.class);
 	
 
 	/**
