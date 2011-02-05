@@ -61,7 +61,7 @@ public class ImportMojo extends AbstractJiemamyMojo {
 	/**
 	 * Location of the output model file.
 	 * 
-	 * @parameter default-value="target/jiemamy.jer"
+	 * @parameter default-value="target/imported.jiemamy"
 	 * @since 0.3
 	 */
 	private File outputFile;
