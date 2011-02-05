@@ -28,12 +28,12 @@ import java.util.Properties;
 import org.apache.commons.dbutils.DbUtils;
 import org.apache.maven.plugin.MojoExecutionException;
 
-import org.jiemamy.DatabaseCleaner;
-import org.jiemamy.DefaultContextMetadata;
 import org.jiemamy.JiemamyContext;
+import org.jiemamy.SimpleJmMetadata;
 import org.jiemamy.composer.ImportException;
-import org.jiemamy.composer.importer.DefaultDatabaseImportConfig;
+import org.jiemamy.composer.importer.SimpleDbImportConfig;
 import org.jiemamy.dialect.Dialect;
+import org.jiemamy.utils.DbCleaner;
 import org.jiemamy.utils.sql.DriverNotFoundException;
 import org.jiemamy.utils.sql.DriverUtil;
 
@@ -80,11 +80,11 @@ public class CleanMojo extends AbstractJiemamyMojo {
 
 	public void execute() throws MojoExecutionException {
 		JiemamyContext context = newJiemamyContext();
-		DefaultContextMetadata metadata = new DefaultContextMetadata();
+		SimpleJmMetadata metadata = new SimpleJmMetadata();
 		metadata.setDialectClassName(DIALECT);
 		context.setMetadata(metadata);
 		
-		DefaultDatabaseImportConfig config = new DefaultDatabaseImportConfig();
+		SimpleDbImportConfig config = new SimpleDbImportConfig();
 		
 		Connection connection = null;
 		try {
@@ -111,31 +111,23 @@ public class CleanMojo extends AbstractJiemamyMojo {
 				throw new MojoExecutionException("connection failed");
 			}
 			
-			DatabaseCleaner databaseCleaner = new DatabaseCleaner();
 			config.setDialect(context.findDialect());
-//			config.setSchema(jiemamy.getFactory().getRootModel().getSchemaName());
+			config.setSchema(context.getMetadata().getSchemaName());
 			
-			databaseCleaner.clean(config);
+			DbCleaner.clean(config);
 		} catch (DriverNotFoundException e) {
-			// TODO Auto-generated catch block
 			throw new MojoExecutionException("Driver not found: " + config.getDriverClassName(), e);
 		} catch (InstantiationException e) {
-			// TODO Auto-generated catch block
 			throw new MojoExecutionException("", e);
 		} catch (IllegalAccessException e) {
-			// TODO Auto-generated catch block
 			throw new MojoExecutionException("", e);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			throw new MojoExecutionException("", e);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			throw new MojoExecutionException("", e);
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			throw new MojoExecutionException("", e);
 		} catch (ImportException e) {
-			// TODO Auto-generated catch block
 			throw new MojoExecutionException("", e);
 		} finally {
 			DbUtils.closeQuietly(connection);

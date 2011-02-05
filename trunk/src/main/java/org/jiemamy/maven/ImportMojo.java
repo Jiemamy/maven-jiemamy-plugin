@@ -30,11 +30,11 @@ import java.util.Properties;
 import org.apache.commons.dbutils.DbUtils;
 import org.apache.maven.plugin.MojoExecutionException;
 
-import org.jiemamy.DefaultContextMetadata;
 import org.jiemamy.JiemamyContext;
+import org.jiemamy.SimpleJmMetadata;
 import org.jiemamy.composer.ImportException;
-import org.jiemamy.composer.importer.DatabaseImporter;
-import org.jiemamy.composer.importer.DefaultDatabaseImportConfig;
+import org.jiemamy.composer.importer.DbImporter;
+import org.jiemamy.composer.importer.SimpleDbImportConfig;
 import org.jiemamy.dialect.Dialect;
 import org.jiemamy.serializer.SerializationException;
 import org.jiemamy.utils.sql.DriverNotFoundException;
@@ -105,11 +105,11 @@ public class ImportMojo extends AbstractJiemamyMojo {
 
 	public void execute() throws MojoExecutionException {
 		JiemamyContext context = newJiemamyContext();
-		DefaultContextMetadata metadata = new DefaultContextMetadata();
+		SimpleJmMetadata metadata = new SimpleJmMetadata();
 		metadata.setDialectClassName(dialect);
 		context.setMetadata(metadata);
 		
-		DefaultDatabaseImportConfig config = new DefaultDatabaseImportConfig();
+		SimpleDbImportConfig config = new SimpleDbImportConfig();
 		
 		Connection connection = null;
 		try {
@@ -136,8 +136,8 @@ public class ImportMojo extends AbstractJiemamyMojo {
 				throw new MojoExecutionException("connection failed");
 			}
 			
-			DatabaseImporter databaseImporter = new DatabaseImporter();
-			databaseImporter.importModel(context, config);
+			DbImporter dbImporter = new DbImporter();
+			dbImporter.importModel(context, config);
 			
 			JiemamyContext.findSerializer().serialize(context, new FileOutputStream(outputFile));
 		} catch (ImportException e) {
