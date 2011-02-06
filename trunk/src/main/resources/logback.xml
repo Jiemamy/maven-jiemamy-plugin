@@ -3,7 +3,7 @@
     class="ch.qos.logback.core.ConsoleAppender">
    <Target>System.out</Target>
     <layout class="ch.qos.logback.classic.PatternLayout">
-      <Pattern>%date{"HH:mm:ss.SSS"}[%thread]%-5level %logger{36}:%line - %msg%n</Pattern>
+      <Pattern>%date{"HH:mm:ss,SSS"} [%thread] %-5level %logger{36}:%line - %msg%n</Pattern>
     </layout>
   </appender>
 
@@ -15,5 +15,4 @@
   <logger name="org.jiemamy">
     <level value="INFO" />
   </logger>
-
 </configuration>

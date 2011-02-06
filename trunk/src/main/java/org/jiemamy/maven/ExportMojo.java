@@ -89,7 +89,7 @@ public class ExportMojo extends AbstractJiemamyMojo {
 	 * @parameter
 	 * @since 0.3
 	 */
-	private Map<String, Object> parameter;
+	private Map<String, String> parameter;
 	
 	/** 戻り値としてサポートする型一覧 */
 	@SuppressWarnings("unchecked")
@@ -172,11 +172,11 @@ public class ExportMojo extends AbstractJiemamyMojo {
 		getLog().info("Configure Exporter...");
 		SqlExporter exporter = new SqlExporter();
 		SimpleSqlExportConfig config = new SimpleSqlExportConfig();
-		config.setOutputFile(new File((String) parameter.get(SqlExporter.OUTPUT_FILE)));
-		config.setOverwrite(Boolean.valueOf((String) parameter.get(SqlExporter.OVERWRITE)));
-		config.setEmitDropStatements(Boolean.valueOf((String) parameter.get(SqlExporter.DROP)));
-		config.setEmitCreateSchema(Boolean.valueOf((String) parameter.get(SqlExporter.SCHEMA)));
-		String indexObject = (String) parameter.get(SqlExporter.DATA_SET_INDEX);
+		config.setOutputFile(new File(parameter.get(SqlExporter.OUTPUT_FILE)));
+		config.setOverwrite(Boolean.valueOf(parameter.get(SqlExporter.OVERWRITE)));
+		config.setEmitDropStatements(Boolean.valueOf(parameter.get(SqlExporter.DROP)));
+		config.setEmitCreateSchema(Boolean.valueOf(parameter.get(SqlExporter.SCHEMA)));
+		String indexObject = parameter.get(SqlExporter.DATA_SET_INDEX);
 		config.setDataSetIndex(indexObject == null ? -1 : Integer.valueOf(indexObject));
 		
 		getLog().info("Executing Exporter...");
