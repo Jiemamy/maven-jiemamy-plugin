@@ -21,14 +21,9 @@ package org.jiemamy.maven;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.net.URL;
 import java.sql.Connection;
-import java.sql.Driver;
 import java.sql.SQLException;
 import java.util.List;
-import java.util.Map;
-import java.util.Properties;
 
 import org.apache.commons.dbutils.DbUtils;
 import org.apache.maven.plugin.MojoExecutionException;
@@ -36,14 +31,12 @@ import org.apache.maven.plugin.MojoExecutionException;
 import org.jiemamy.DiagramFacet;
 import org.jiemamy.JiemamyContext;
 import org.jiemamy.SqlFacet;
-import org.jiemamy.composer.importer.SimpleDbImportConfig;
 import org.jiemamy.dialect.Dialect;
 import org.jiemamy.dialect.EmitConfig;
 import org.jiemamy.model.ModelConsistencyException;
 import org.jiemamy.model.sql.SqlStatement;
+import org.jiemamy.serializer.JiemamySerializer;
 import org.jiemamy.serializer.SerializationException;
-import org.jiemamy.utils.sql.DriverNotFoundException;
-import org.jiemamy.utils.sql.DriverUtil;
 import org.jiemamy.utils.sql.SqlExecutor;
 
 /**
@@ -57,15 +50,6 @@ import org.jiemamy.utils.sql.SqlExecutor;
  */
 public class ExecuteMojo extends AbstractJiemamyMojo {
 	
-	/** ConfigKey: 出力データセット番号 (Integer) */
-	public static final String DATA_SET_INDEX = "dataSetIndex";
-	
-	/** ConfigKey: DROP文を出力するかどうか (Boolean) */
-	public static final String DROP = "drop";
-	
-	/** ConfigKey: DROP文を出力するかどうか (Boolean) */
-	public static final String SCHEMA = "schema";
-	
 	/**
 	 * Location of the input model file.
 	 * 
@@ -76,48 +60,28 @@ public class ExecuteMojo extends AbstractJiemamyMojo {
 	private File inputFile;
 	
 	/**
-	 * Parameter for exporter.
+	 * Emit create schema statement or not.
 	 * 
-	 * @parameter
+	 * @parameter default-value="false"
 	 * @since 0.3
 	 */
-	private Map<String, String> parameter;
+	private boolean createSchema;
 	
 	/**
-	 * Database Driver
+	 * Emit drop statement or not.
 	 * 
-	 * @parameter
-	 * @required
+	 * @parameter default-value="false"
 	 * @since 0.3
 	 */
-	private String driver;
+	private boolean drop;
 	
 	/**
-	 * Database Uri
+	 * DataSet index.
 	 * 
-	 * @parameter
-	 * @required
+	 * @parameter default-value="-1"
 	 * @since 0.3
 	 */
-	private String uri;
-	
-	/**
-	 * Database Username
-	 * 
-	 * @parameter
-	 * @required
-	 * @since 0.3
-	 */
-	private String username;
-	
-	/**
-	 * Database Password
-	 * 
-	 * @parameter
-	 * @required
-	 * @since 0.3
-	 */
-	private String password;
+	private int dataSetIndex;
 	
 
 	/**
@@ -131,13 +95,13 @@ public class ExecuteMojo extends AbstractJiemamyMojo {
 			FileInputStream inputStream = new FileInputStream(inputFile);
 			
 			getLog().info("Serializing stream to model.");
-			JiemamyContext context =
-					JiemamyContext.findSerializer().deserialize(inputStream, SqlFacet.PROVIDER, DiagramFacet.PROVIDER);
-			getLog().debug(context.toString());
+			JiemamySerializer serializer = JiemamyContext.findSerializer();
+			JiemamyContext context = serializer.deserialize(inputStream, SqlFacet.PROVIDER, DiagramFacet.PROVIDER);
 			
 			getLog().info("Execute SQLs...");
+			EmitConfig emitConfig = new ExecuteEmitConfig(createSchema, drop, dataSetIndex);
 			Dialect dialect = context.findDialect();
-			List<SqlStatement> sqlStatements = dialect.getSqlEmitter().emit(context, newEmitConfig());
+			List<SqlStatement> sqlStatements = dialect.getSqlEmitter().emit(context, emitConfig);
 			execSqlStatment(sqlStatements);
 		} catch (FileNotFoundException e) {
 			throw new MojoExecutionException("can not found input file: " + inputFile.getName(), e);
@@ -155,53 +119,7 @@ public class ExecuteMojo extends AbstractJiemamyMojo {
 	}
 	
 	/**
-	 * {@link Connection}を取得する。
-	 * 
-	 * @return {@link Connection}
-	 * @throws MojoExecutionException {@link Connection}が取得できなかった場合
-	 * @since 0.3
-	 */
-	protected Connection getConnection() throws MojoExecutionException {
-		SimpleDbImportConfig config = new SimpleDbImportConfig();
-		config.setDriverClassName(driver);
-		config.setUsername(username);
-		config.setPassword(password);
-		config.setUri(uri);
-		
-		Properties props = new Properties();
-		props.setProperty("user", config.getUsername());
-		props.setProperty("password", config.getPassword());
-		
-		URL[] paths = config.getDriverJarPaths();
-		String className = config.getDriverClassName();
-		
-		Connection connection = null;
-		try {
-			Driver jdbcDriver = DriverUtil.getDriverInstance(paths, className);
-			getLog().info("connect to " + uri);
-			getLog().debug("  username: " + username);
-			getLog().debug("  password: ****");
-			connection = jdbcDriver.connect(config.getUri(), props);
-		} catch (DriverNotFoundException e) {
-			throw new MojoExecutionException("", e);
-		} catch (InstantiationException e) {
-			throw new MojoExecutionException("", e);
-		} catch (IllegalAccessException e) {
-			throw new MojoExecutionException("", e);
-		} catch (IOException e) {
-			throw new MojoExecutionException("", e);
-		} catch (SQLException e) {
-			throw new MojoExecutionException("", e);
-		}
-		
-		if (connection == null) {
-			throw new MojoExecutionException("can not create connection");
-		}
-		return connection;
-	}
-	
-	/**
-	 * {@link SqlStatement}の{@link List}からSQLを取得し、実行します。
+	 * {@link SqlStatement}の{@link List}からSQLを順次取得し、実行する。
 	 * 
 	 * @param sqlStatements {@link SqlStatement}のリスト
 	 * @throws MojoExecutionException SQLの実行に失敗した場合
@@ -212,7 +130,7 @@ public class ExecuteMojo extends AbstractJiemamyMojo {
 			connection = getConnection();
 			SqlExecutor ex = new SqlExecutor(connection);
 			for (SqlStatement sqlStatement : sqlStatements) {
-				getLog().info("EXECUTE: " + sqlStatement.toString());
+				getLog().info("execute: " + sqlStatement.toString());
 				ex.execute(sqlStatement.toString());
 			}
 		} catch (SQLException e) {
@@ -221,26 +139,6 @@ public class ExecuteMojo extends AbstractJiemamyMojo {
 			DbUtils.closeQuietly(connection);
 			getLog().info("connection closed.");
 		}
-	}
-	
-	private String getConfig(String key, String defaultValue) {
-		if (parameter == null) {
-			return defaultValue;
-		}
-		String value = parameter.get(key);
-		return value == null ? defaultValue : value;
-	}
-	
-	/**
-	 * {@link #parameter}より{@link EmitConfig}の設定ファイルを生成する。
-	 * 
-	 * @return {@link EmitConfig}
-	 */
-	private EmitConfig newEmitConfig() {
-		boolean schema = Boolean.valueOf(getConfig(SCHEMA, "true"));
-		boolean drop = Boolean.valueOf(getConfig(DROP, "true"));
-		int dataSetIndex = Integer.valueOf(getConfig(DATA_SET_INDEX, "-1"));
-		return new ExecuteEmitConfig(schema, drop, dataSetIndex);
 	}
 	
 
@@ -266,7 +164,6 @@ public class ExecuteMojo extends AbstractJiemamyMojo {
 		 * @param dataSetIndex データセットのインデックス
 		 */
 		ExecuteEmitConfig(boolean emitCreateSchemaStatement, boolean emitDropStatements, int dataSetIndex) {
-			super();
 			this.emitCreateSchemaStatement = emitCreateSchemaStatement;
 			this.emitDropStatements = emitDropStatements;
 			this.dataSetIndex = dataSetIndex;

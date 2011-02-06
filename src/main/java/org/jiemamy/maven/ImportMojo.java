@@ -21,11 +21,7 @@ package org.jiemamy.maven;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.net.URL;
 import java.sql.Connection;
-import java.sql.Driver;
-import java.sql.SQLException;
-import java.util.Properties;
 
 import org.apache.commons.dbutils.DbUtils;
 import org.apache.maven.plugin.MojoExecutionException;
@@ -36,9 +32,9 @@ import org.jiemamy.composer.ImportException;
 import org.jiemamy.composer.importer.DbImporter;
 import org.jiemamy.composer.importer.SimpleDbImportConfig;
 import org.jiemamy.dialect.Dialect;
+import org.jiemamy.serializer.JiemamySerializer;
 import org.jiemamy.serializer.SerializationException;
 import org.jiemamy.utils.sql.DriverNotFoundException;
-import org.jiemamy.utils.sql.DriverUtil;
 
 /**
  * Import from Database to Jiemamy Model.
@@ -53,46 +49,10 @@ public class ImportMojo extends AbstractJiemamyMojo {
 	/**
 	 * dialect class.
 	 * 
-	 * @parameter default-value="org.jiemamy.dialect.generic.GenericDialect"
+	 * @parameter default-value="org.jiemamy.dialect.GenericDialect"
 	 * @since 0.3
 	 */
 	private String dialect;
-	
-	/**
-	 * Database Driver
-	 * 
-	 * @parameter
-	 * @required
-	 * @since 0.3
-	 */
-	private String driver;
-	
-	/**
-	 * Database Uri
-	 * 
-	 * @parameter
-	 * @required
-	 * @since 0.3
-	 */
-	private String uri;
-	
-	/**
-	 * Database Username
-	 * 
-	 * @parameter 
-	 * @required
-	 * @since 0.3
-	 */
-	private String username;
-	
-	/**
-	 * Database Password
-	 * 
-	 * @parameter
-	 * @required
-	 * @since 0.3
-	 */
-	private String password;
 	
 	/**
 	 * Location of the output model file.
@@ -104,44 +64,35 @@ public class ImportMojo extends AbstractJiemamyMojo {
 	
 
 	public void execute() throws MojoExecutionException {
-		getLog().info(">>>> Starting maven-jiemamy-plugin:export...");
+		getLog().info(">>>> Starting maven-jiemamy-plugin:import...");
 		
 		JiemamyContext context = newJiemamyContext();
 		SimpleJmMetadata metadata = new SimpleJmMetadata();
 		metadata.setDialectClassName(dialect);
 		context.setMetadata(metadata);
 		
-		SimpleDbImportConfig config = new SimpleDbImportConfig();
-		
 		Connection connection = null;
 		try {
-			config.setDriverClassName(driver);
-			config.setUsername(username);
-			config.setPassword(password);
-			config.setImportDataSet(false);
-			config.setDialect((Dialect) Class.forName(dialect).newInstance());
-			config.setUri(uri);
-			
-			Properties props = new Properties();
-			props.setProperty("user", config.getUsername());
-			props.setProperty("password", config.getPassword());
-			
-			URL[] paths = config.getDriverJarPaths();
-			String className = config.getDriverClassName();
-			
-			Driver driverClass = DriverUtil.getDriverInstance(paths, className);
-			
-			connection = driverClass.connect(config.getUri(), props);
+			connection = getConnection();
 			
 			if (connection == null) {
 				getLog().error("connection failed");
 				throw new MojoExecutionException("connection failed");
 			}
 			
+			SimpleDbImportConfig config = new SimpleDbImportConfig();
+			config.setDriverClassName(getDriver());
+			config.setUsername(getUsername());
+			config.setPassword(getPassword());
+			config.setImportDataSet(false);
+			config.setDialect((Dialect) Class.forName(dialect).newInstance());
+			config.setUri(getUri());
+			
 			DbImporter dbImporter = new DbImporter();
 			dbImporter.importModel(context, config);
 			
-			JiemamyContext.findSerializer().serialize(context, new FileOutputStream(outputFile));
+			JiemamySerializer serializer = JiemamyContext.findSerializer();
+			serializer.serialize(context, new FileOutputStream(outputFile));
 		} catch (ImportException e) {
 			throw new MojoExecutionException("", e);
 		} catch (InstantiationException e) {
@@ -153,8 +104,6 @@ public class ImportMojo extends AbstractJiemamyMojo {
 		} catch (ClassNotFoundException e) {
 			throw new MojoExecutionException("", e);
 		} catch (IOException e) {
-			throw new MojoExecutionException("", e);
-		} catch (SQLException e) {
 			throw new MojoExecutionException("", e);
 		} catch (SerializationException e) {
 			throw new MojoExecutionException("", e);
