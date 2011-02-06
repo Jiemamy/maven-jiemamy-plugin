@@ -59,12 +59,22 @@ public class ImportMojo extends AbstractJiemamyMojo {
 	private String dialect;
 	
 	/**
-	 * Location of the output model file.
+	 * Database Driver
 	 * 
-	 * @parameter default-value="target/imported.jiemamy"
+	 * @parameter
+	 * @required
 	 * @since 0.3
 	 */
-	private File outputFile;
+	private String driver;
+	
+	/**
+	 * Database Uri
+	 * 
+	 * @parameter
+	 * @required
+	 * @since 0.3
+	 */
+	private String uri;
 	
 	/**
 	 * Database Username
@@ -85,22 +95,12 @@ public class ImportMojo extends AbstractJiemamyMojo {
 	private String password;
 	
 	/**
-	 * Database Driver
+	 * Location of the output model file.
 	 * 
-	 * @parameter
-	 * @required
+	 * @parameter default-value="target/imported.jiemamy"
 	 * @since 0.3
 	 */
-	private String driver;
-	
-	/**
-	 * Database Uri
-	 * 
-	 * @parameter
-	 * @required
-	 * @since 0.3
-	 */
-	private String uri;
+	private File outputFile;
 	
 
 	public void execute() throws MojoExecutionException {

@@ -76,30 +76,12 @@ public class ExecuteMojo extends AbstractJiemamyMojo {
 	private File inputFile;
 	
 	/**
-	 * Parameter for exorter.
+	 * Parameter for exporter.
 	 * 
 	 * @parameter
 	 * @since 0.3
 	 */
-	private Map<String, Object> parameter;
-	
-	/**
-	 * Database Username
-	 * 
-	 * @parameter
-	 * @required
-	 * @since 0.3
-	 */
-	private String username;
-	
-	/**
-	 * Database Password
-	 * 
-	 * @parameter
-	 * @required
-	 * @since 0.3
-	 */
-	private String password;
+	private Map<String, String> parameter;
 	
 	/**
 	 * Database Driver
@@ -118,6 +100,24 @@ public class ExecuteMojo extends AbstractJiemamyMojo {
 	 * @since 0.3
 	 */
 	private String uri;
+	
+	/**
+	 * Database Username
+	 * 
+	 * @parameter
+	 * @required
+	 * @since 0.3
+	 */
+	private String username;
+	
+	/**
+	 * Database Password
+	 * 
+	 * @parameter
+	 * @required
+	 * @since 0.3
+	 */
+	private String password;
 	
 
 	/**
@@ -143,6 +143,8 @@ public class ExecuteMojo extends AbstractJiemamyMojo {
 			throw new MojoExecutionException("can not found input file: " + inputFile.getName(), e);
 		} catch (SerializationException e) {
 			throw new MojoExecutionException("can not serialization jiemamy model.", e);
+		} catch (IllegalStateException e) {
+			throw new MojoExecutionException("can not found dialect", e);
 		} catch (ModelConsistencyException e) {
 			throw new MojoExecutionException("can not emit SQL.", e);
 		} catch (ClassNotFoundException e) {
@@ -222,13 +224,12 @@ public class ExecuteMojo extends AbstractJiemamyMojo {
 		}
 	}
 	
-	@SuppressWarnings("unchecked")
-	private <T>T getConfig(String key, T defaultValue) {
+	private String getConfig(String key, String defaultValue) {
 		if (parameter == null) {
 			return defaultValue;
 		}
-		Object value = parameter.get(key);
-		return value == null ? defaultValue : (T) value;
+		String value = parameter.get(key);
+		return value == null ? defaultValue : value;
 	}
 	
 	/**
@@ -237,9 +238,9 @@ public class ExecuteMojo extends AbstractJiemamyMojo {
 	 * @return {@link EmitConfig}
 	 */
 	private EmitConfig newEmitConfig() {
-		boolean schema = getConfig(SCHEMA, true);
-		boolean drop = getConfig(DROP, true);
-		int dataSetIndex = getConfig(DATA_SET_INDEX, -1);
+		boolean schema = Boolean.valueOf(getConfig(SCHEMA, "true"));
+		boolean drop = Boolean.valueOf(getConfig(DROP, "true"));
+		int dataSetIndex = Integer.valueOf(getConfig(DATA_SET_INDEX, "-1"));
 		return new ExecuteEmitConfig(schema, drop, dataSetIndex);
 	}
 	

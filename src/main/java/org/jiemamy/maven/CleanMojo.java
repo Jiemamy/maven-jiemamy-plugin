@@ -52,30 +52,30 @@ public class CleanMojo extends AbstractJiemamyMojo {
 	/**
 	 * @parameter
 	 * @required
-	 * @since 0.2
-	 */
-	private String username;
-	
-	/**
-	 * @parameter
-	 * @required
-	 * @since 0.2
-	 */
-	private String password;
-	
-	/**
-	 * @parameter
-	 * @required
-	 * @since 0.2
+	 * @since 0.3
 	 */
 	private String driver;
 	
 	/**
 	 * @parameter
 	 * @required
-	 * @since 0.2
+	 * @since 0.3
 	 */
 	private String uri;
+	
+	/**
+	 * @parameter
+	 * @required
+	 * @since 0.3
+	 */
+	private String username;
+	
+	/**
+	 * @parameter
+	 * @required
+	 * @since 0.3
+	 */
+	private String password;
 	
 
 	public void execute() throws MojoExecutionException {
