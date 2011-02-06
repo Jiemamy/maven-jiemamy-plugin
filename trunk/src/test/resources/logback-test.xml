@@ -3,7 +3,7 @@
     class="ch.qos.logback.core.ConsoleAppender">
    <Target>System.out</Target>
     <layout class="ch.qos.logback.classic.PatternLayout">
-      <Pattern>%d{HH:mm:ss.SSS z,JST} [%thread] %-5level %logger{36} - %msg%n</Pattern>
+      <Pattern>%date{"HH:mm:ss.SSS"}[%thread]%-5level %logger{36}:%line - %msg%n</Pattern>
     </layout>
   </appender>
 
