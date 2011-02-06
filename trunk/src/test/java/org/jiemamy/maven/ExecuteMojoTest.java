@@ -21,8 +21,9 @@ package org.jiemamy.maven;
 import java.io.File;
 import java.lang.reflect.Field;
 import java.net.URL;
-import java.util.HashMap;
 import java.util.Map;
+
+import com.google.common.collect.Maps;
 
 import org.junit.After;
 import org.junit.Before;
@@ -60,9 +61,9 @@ public class ExecuteMojoTest extends AbstractDatabaseTest {
 		super.setUp();
 		executeMojo = new ExecuteMojo();
 		
-		Map<String, Object> parameter = new HashMap<String, Object>();
-		parameter.put(ExecuteMojo.SCHEMA, false);
-		parameter.put(ExecuteMojo.DROP, false);
+		Map<String, String> parameter = Maps.newHashMap();
+		parameter.put(ExecuteMojo.SCHEMA, "false");
+		parameter.put(ExecuteMojo.DROP, "false");
 		Field parameterField = ExecuteMojo.class.getDeclaredField("parameter");
 		parameterField.setAccessible(true);
 		parameterField.set(executeMojo, parameter);
