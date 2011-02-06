@@ -87,25 +87,27 @@ public class CleanMojo extends AbstractJiemamyMojo {
 		context.setMetadata(metadata);
 		
 		SimpleDbImportConfig config = new SimpleDbImportConfig();
+		config.setDriverClassName(driver);
+		config.setUsername(username);
+		config.setPassword(password);
+		config.setImportDataSet(false);
+		config.setUri(uri);
+		
+		Properties props = new Properties();
+		props.setProperty("user", config.getUsername());
+		props.setProperty("password", config.getPassword());
+		
+		URL[] paths = config.getDriverJarPaths();
+		String className = config.getDriverClassName();
 		
 		Connection connection = null;
 		try {
-			config.setDriverClassName(driver);
-			config.setUsername(username);
-			config.setPassword(password);
-			config.setImportDataSet(false);
 			config.setDialect((Dialect) Class.forName(DIALECT).newInstance());
-			config.setUri(uri);
-			
-			Properties props = new Properties();
-			props.setProperty("user", config.getUsername());
-			props.setProperty("password", config.getPassword());
-			
-			URL[] paths = config.getDriverJarPaths();
-			String className = config.getDriverClassName();
 			
 			Driver driver = DriverUtil.getDriverInstance(paths, className);
-			
+			getLog().info("connect to " + uri);
+			getLog().debug("  username: " + username);
+			getLog().debug("  password: ****");
 			connection = driver.connect(config.getUri(), props);
 			
 			if (connection == null) {
@@ -133,6 +135,7 @@ public class CleanMojo extends AbstractJiemamyMojo {
 			throw new MojoExecutionException("", e);
 		} finally {
 			DbUtils.closeQuietly(connection);
+			getLog().info("connection closed.");
 		}
 		getLog().info("<<<< Exit maven-jiemamy-plugin:clean successfully.");
 	}
