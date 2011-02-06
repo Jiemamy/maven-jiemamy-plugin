@@ -18,24 +18,14 @@
  */
 package org.jiemamy.maven;
 
-import java.io.IOException;
-import java.net.URL;
-import java.sql.Connection;
-import java.sql.Driver;
-import java.sql.SQLException;
-import java.util.Properties;
-
-import org.apache.commons.dbutils.DbUtils;
 import org.apache.maven.plugin.MojoExecutionException;
 
 import org.jiemamy.JiemamyContext;
 import org.jiemamy.SimpleJmMetadata;
 import org.jiemamy.composer.ImportException;
 import org.jiemamy.composer.importer.SimpleDbImportConfig;
-import org.jiemamy.dialect.Dialect;
 import org.jiemamy.utils.DbCleaner;
 import org.jiemamy.utils.sql.DriverNotFoundException;
-import org.jiemamy.utils.sql.DriverUtil;
 
 /**
  * Goal which clean Database.
@@ -47,95 +37,40 @@ import org.jiemamy.utils.sql.DriverUtil;
  */
 public class CleanMojo extends AbstractJiemamyMojo {
 	
-	private static final String DIALECT = "org.jiemamy.dialect.GenericDialect";
-	
 	/**
-	 * @parameter
-	 * @required
+	 * dialect class.
+	 * 
+	 * @parameter default-value="org.jiemamy.dialect.GenericDialect"
 	 * @since 0.3
 	 */
-	private String driver;
-	
-	/**
-	 * @parameter
-	 * @required
-	 * @since 0.3
-	 */
-	private String uri;
-	
-	/**
-	 * @parameter
-	 * @required
-	 * @since 0.3
-	 */
-	private String username;
-	
-	/**
-	 * @parameter
-	 * @required
-	 * @since 0.3
-	 */
-	private String password;
+	private String dialect;
 	
 
 	public void execute() throws MojoExecutionException {
 		getLog().info(">>>> Starting maven-jiemamy-plugin:clean...");
 		
-		JiemamyContext context = newJiemamyContext();
-		SimpleJmMetadata metadata = new SimpleJmMetadata();
-		metadata.setDialectClassName(DIALECT);
-		context.setMetadata(metadata);
-		
-		SimpleDbImportConfig config = new SimpleDbImportConfig();
-		config.setDriverClassName(driver);
-		config.setUsername(username);
-		config.setPassword(password);
-		config.setImportDataSet(false);
-		config.setUri(uri);
-		
-		Properties props = new Properties();
-		props.setProperty("user", config.getUsername());
-		props.setProperty("password", config.getPassword());
-		
-		URL[] paths = config.getDriverJarPaths();
-		String className = config.getDriverClassName();
-		
-		Connection connection = null;
 		try {
-			config.setDialect((Dialect) Class.forName(DIALECT).newInstance());
+			JiemamyContext context = newJiemamyContext();
+			SimpleJmMetadata metadata = new SimpleJmMetadata();
+			metadata.setDialectClassName(dialect);
+			context.setMetadata(metadata);
 			
-			Driver driver = DriverUtil.getDriverInstance(paths, className);
-			getLog().info("connect to " + uri);
-			getLog().debug("  username: " + username);
-			getLog().debug("  password: ****");
-			connection = driver.connect(config.getUri(), props);
-			
-			if (connection == null) {
-				getLog().error("connection failed");
-				throw new MojoExecutionException("connection failed");
-			}
-			
+			SimpleDbImportConfig config = new SimpleDbImportConfig();
+			config.setDriverClassName(getDriver());
+			config.setUsername(getUsername());
+			config.setPassword(getPassword());
+			config.setImportDataSet(false);
+			config.setUri(getUri());
 			config.setDialect(context.findDialect());
 			config.setSchema(context.getMetadata().getSchemaName());
 			
 			DbCleaner.clean(config);
 		} catch (DriverNotFoundException e) {
-			throw new MojoExecutionException("Driver not found: " + config.getDriverClassName(), e);
-		} catch (InstantiationException e) {
-			throw new MojoExecutionException("", e);
-		} catch (IllegalAccessException e) {
-			throw new MojoExecutionException("", e);
-		} catch (IOException e) {
-			throw new MojoExecutionException("", e);
-		} catch (SQLException e) {
-			throw new MojoExecutionException("", e);
+			throw new MojoExecutionException("Driver not found: " + getDriver(), e);
 		} catch (ClassNotFoundException e) {
 			throw new MojoExecutionException("", e);
 		} catch (ImportException e) {
 			throw new MojoExecutionException("", e);
-		} finally {
-			DbUtils.closeQuietly(connection);
-			getLog().info("connection closed.");
 		}
 		getLog().info("<<<< Exit maven-jiemamy-plugin:clean successfully.");
 	}

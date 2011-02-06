@@ -27,7 +27,6 @@ import java.lang.reflect.Type;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
@@ -41,6 +40,8 @@ import javassist.CtMethod;
 import javassist.CtNewMethod;
 import javassist.NotFoundException;
 
+import com.google.common.collect.Sets;
+
 import org.apache.maven.plugin.MojoExecutionException;
 
 import org.jiemamy.DiagramFacet;
@@ -53,13 +54,15 @@ import org.jiemamy.composer.exporter.SimpleSqlExportConfig;
 import org.jiemamy.composer.exporter.SqlExporter;
 import org.jiemamy.maven.generator.MethodCodeGenerator;
 import org.jiemamy.maven.generator.MethodCodeGeneratorFactory;
+import org.jiemamy.serializer.JiemamySerializer;
 import org.jiemamy.serializer.SerializationException;
 import org.jiemamy.utils.reflect.ReflectionUtil;
 
 /**
  * Goal which execute Exporter.
  * 
- * @goal export 
+ * @goal export
+ * @author daisuke
  * @author yamkazu
  * @version $Id: ExportMojo.java 3674 2009-09-24 16:09:50Z yamkazu $
  * @since 0.3
@@ -91,14 +94,14 @@ public class ExportMojo extends AbstractJiemamyMojo {
 	 */
 	private Map<String, String> parameter;
 	
+	// FORMAT-OFF
 	/** 戻り値としてサポートする型一覧 */
-	@SuppressWarnings("unchecked")
-	private static final Set<Class<?>> SUPPORTED_RETURN_TYPES = Collections.unmodifiableSet(new HashSet<Class<?>>(
-			Arrays.asList(boolean.class, byte.class, short.class, int.class, long.class, float.class, double.class,
-					char.class, Boolean.class, Byte.class, Short.class, Integer.class, Long.class, Float.class,
-					Double.class, Character.class, File.class, Date.class, URL.class, String.class)));
+	private static final Set<Class<?>> SUPPORTED_RETURN_TYPES = Sets.<Class<?>>newHashSet(
+			boolean.class, byte.class, short.class, int.class, long.class, float.class, double.class, char.class,
+			Boolean.class, Byte.class, Short.class, Integer.class, Long.class, Float.class, Double.class, Character.class,
+			File.class, Date.class, URL.class, String.class);
+	// FORMAT-ON
 	
-
 	public void execute() throws MojoExecutionException {
 		getLog().info(">>>> Starting maven-jiemamy-plugin:export...");
 		
@@ -107,8 +110,8 @@ public class ExportMojo extends AbstractJiemamyMojo {
 			FileInputStream inputStream = new FileInputStream(inputFile);
 			
 			getLog().info("Serializing stream to model.");
-			JiemamyContext context =
-					JiemamyContext.findSerializer().deserialize(inputStream, SqlFacet.PROVIDER, DiagramFacet.PROVIDER);
+			JiemamySerializer serializer = JiemamyContext.findSerializer();
+			JiemamyContext context = serializer.deserialize(inputStream, SqlFacet.PROVIDER, DiagramFacet.PROVIDER);
 			getLog().debug(context.toString());
 			
 			if (exporterClass == null) {

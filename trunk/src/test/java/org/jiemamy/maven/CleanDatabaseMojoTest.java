@@ -52,21 +52,25 @@ public class CleanDatabaseMojoTest extends AbstractDatabaseTest {
 		super.setUp();
 		cleanDatabaseMojo = new CleanMojo();
 		
-		Field usernameField = CleanMojo.class.getDeclaredField("username");
+		Field usernameField = AbstractJiemamyMojo.class.getDeclaredField("username");
 		usernameField.setAccessible(true);
 		usernameField.set(cleanDatabaseMojo, getUsername());
 		
-		Field passwordField = CleanMojo.class.getDeclaredField("password");
+		Field passwordField = AbstractJiemamyMojo.class.getDeclaredField("password");
 		passwordField.setAccessible(true);
 		passwordField.set(cleanDatabaseMojo, getPassword());
 		
-		Field driverField = CleanMojo.class.getDeclaredField("driver");
+		Field driverField = AbstractJiemamyMojo.class.getDeclaredField("driver");
 		driverField.setAccessible(true);
 		driverField.set(cleanDatabaseMojo, getDriverClassName());
 		
-		Field uriField = CleanMojo.class.getDeclaredField("uri");
+		Field uriField = AbstractJiemamyMojo.class.getDeclaredField("uri");
 		uriField.setAccessible(true);
 		uriField.set(cleanDatabaseMojo, getConnectionUri());
+		
+		Field dialectField = CleanMojo.class.getDeclaredField("dialect");
+		dialectField.setAccessible(true);
+		dialectField.set(cleanDatabaseMojo, "org.jiemamy.dialect.GenericDialect");
 	}
 	
 	/**

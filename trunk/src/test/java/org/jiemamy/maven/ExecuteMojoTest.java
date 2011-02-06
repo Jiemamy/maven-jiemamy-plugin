@@ -21,9 +21,6 @@ package org.jiemamy.maven;
 import java.io.File;
 import java.lang.reflect.Field;
 import java.net.URL;
-import java.util.Map;
-
-import com.google.common.collect.Maps;
 
 import org.junit.After;
 import org.junit.Before;
@@ -61,33 +58,37 @@ public class ExecuteMojoTest extends AbstractDatabaseTest {
 		super.setUp();
 		executeMojo = new ExecuteMojo();
 		
-		Map<String, String> parameter = Maps.newHashMap();
-		parameter.put(ExecuteMojo.SCHEMA, "false");
-		parameter.put(ExecuteMojo.DROP, "false");
-		Field parameterField = ExecuteMojo.class.getDeclaredField("parameter");
-		parameterField.setAccessible(true);
-		parameterField.set(executeMojo, parameter);
-		
 		Field inputFileField = ExecuteMojo.class.getDeclaredField("inputFile");
 		inputFileField.setAccessible(true);
 		inputFileField.set(executeMojo, inputFile);
 		
-		Field driverField = ExecuteMojo.class.getDeclaredField("driver");
+		Field createSchemaField = ExecuteMojo.class.getDeclaredField("createSchema");
+		createSchemaField.setAccessible(true);
+		createSchemaField.set(executeMojo, false);
+		
+		Field dropField = ExecuteMojo.class.getDeclaredField("drop");
+		dropField.setAccessible(true);
+		dropField.set(executeMojo, false);
+		
+		Field dataSetIndexField = ExecuteMojo.class.getDeclaredField("dataSetIndex");
+		dataSetIndexField.setAccessible(true);
+		dataSetIndexField.set(executeMojo, 0);
+		
+		Field driverField = AbstractJiemamyMojo.class.getDeclaredField("driver");
 		driverField.setAccessible(true);
 		driverField.set(executeMojo, getDriverClassName());
 		
-		Field uriField = ExecuteMojo.class.getDeclaredField("uri");
+		Field uriField = AbstractJiemamyMojo.class.getDeclaredField("uri");
 		uriField.setAccessible(true);
 		uriField.set(executeMojo, getConnectionUri());
 		
-		Field usernameFiled = ExecuteMojo.class.getDeclaredField("username");
+		Field usernameFiled = AbstractJiemamyMojo.class.getDeclaredField("username");
 		usernameFiled.setAccessible(true);
 		usernameFiled.set(executeMojo, getUsername());
 		
-		Field passwordField = ExecuteMojo.class.getDeclaredField("password");
+		Field passwordField = AbstractJiemamyMojo.class.getDeclaredField("password");
 		passwordField.setAccessible(true);
 		passwordField.set(executeMojo, getPassword());
-		
 	}
 	
 	/**
