@@ -79,6 +79,8 @@ public class CleanMojo extends AbstractJiemamyMojo {
 	
 
 	public void execute() throws MojoExecutionException {
+		getLog().info(">>>> Starting maven-jiemamy-plugin:clean...");
+		
 		JiemamyContext context = newJiemamyContext();
 		SimpleJmMetadata metadata = new SimpleJmMetadata();
 		metadata.setDialectClassName(DIALECT);
@@ -132,6 +134,7 @@ public class CleanMojo extends AbstractJiemamyMojo {
 		} finally {
 			DbUtils.closeQuietly(connection);
 		}
+		getLog().info("<<<< Exit maven-jiemamy-plugin:clean successfully.");
 	}
 	
 }

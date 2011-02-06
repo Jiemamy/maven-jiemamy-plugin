@@ -46,6 +46,13 @@ public abstract class AbstractJiemamyMojo extends AbstractMojo {
 		return DEFAULT_DESTINATION;
 	}
 	
+	/**
+	 * 新しい {@link JiemamyContext} を生成して返す。
+	 * 
+	 * <p>このcontextは SQL-Facet を持っている。</p>
+	 * 
+	 * @return 新しい {@link JiemamyContext}
+	 */
 	protected JiemamyContext newJiemamyContext() {
 		return new JiemamyContext(SqlFacet.PROVIDER);
 	}

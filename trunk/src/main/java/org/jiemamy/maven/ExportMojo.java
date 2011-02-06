@@ -100,7 +100,7 @@ public class ExportMojo extends AbstractJiemamyMojo {
 	
 
 	public void execute() throws MojoExecutionException {
-		getLog().info(">>>> Starting maven-jiemamy-plugin...");
+		getLog().info(">>>> Starting maven-jiemamy-plugin:export...");
 		
 		try {
 			getLog().info("Open Jiemamy model file " + inputFile.getName());
@@ -148,7 +148,7 @@ public class ExportMojo extends AbstractJiemamyMojo {
 			getLog().info("done.");
 		}
 		
-		getLog().info("<<<< Exit maven-jiemamy-plugin successfully.");
+		getLog().info("<<<< Exit maven-jiemamy-plugin:export successfully.");
 	}
 	
 	private void executeExport(JiemamyContext context) throws ClassNotFoundException, MojoExecutionException,
