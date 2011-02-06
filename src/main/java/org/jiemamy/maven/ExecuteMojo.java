@@ -124,7 +124,7 @@ public class ExecuteMojo extends AbstractJiemamyMojo {
 	 * {@link JiemamyContext}をよりSQLを生成し、DatabaseにSQLを適用する。
 	 */
 	public void execute() throws MojoExecutionException {
-		getLog().info(">>>> Starting maven-jiemamy-plugin...");
+		getLog().info(">>>> Starting maven-jiemamy-plugin:execute...");
 		
 		try {
 			getLog().info("Open Jiemamy model file " + inputFile.getName());
@@ -149,7 +149,7 @@ public class ExecuteMojo extends AbstractJiemamyMojo {
 			throw new MojoExecutionException("can not get Dialect from input file.", e);
 		}
 		
-		getLog().info("<<<< Exit maven-jiemamy-plugin successfully.");
+		getLog().info("<<<< Exit maven-jiemamy-plugin:execute successfully.");
 	}
 	
 	/**

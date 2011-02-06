@@ -104,6 +104,8 @@ public class ImportMojo extends AbstractJiemamyMojo {
 	
 
 	public void execute() throws MojoExecutionException {
+		getLog().info(">>>> Starting maven-jiemamy-plugin:export...");
+		
 		JiemamyContext context = newJiemamyContext();
 		SimpleJmMetadata metadata = new SimpleJmMetadata();
 		metadata.setDialectClassName(dialect);
@@ -159,5 +161,7 @@ public class ImportMojo extends AbstractJiemamyMojo {
 		} finally {
 			DbUtils.closeQuietly(connection);
 		}
+		
+		getLog().info("<<<< Exit maven-jiemamy-plugin:import successfully.");
 	}
 }
