@@ -6,7 +6,7 @@
   <parent>
     <groupId>org.jiemamy</groupId>
     <artifactId>jiemamy-master</artifactId>
-    <version>1.6.2</version>
+    <version>1.6.3</version>
   </parent>
   <groupId>org.jiemamy</groupId>
   <artifactId>maven-jiemamy-plugin</artifactId>
