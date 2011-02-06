@@ -26,7 +26,6 @@ import java.net.URL;
 import java.sql.Connection;
 import java.sql.Driver;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
@@ -45,6 +44,7 @@ import org.jiemamy.model.sql.SqlStatement;
 import org.jiemamy.serializer.SerializationException;
 import org.jiemamy.utils.sql.DriverNotFoundException;
 import org.jiemamy.utils.sql.DriverUtil;
+import org.jiemamy.utils.sql.SqlExecutor;
 
 /**
  * jerファイルから生成したSQLをDBに適用するゴール。
@@ -205,17 +205,20 @@ public class ExecuteMojo extends AbstractJiemamyMojo {
 	 */
 	private void execSqlStatment(List<SqlStatement> sqlStatements) throws MojoExecutionException {
 		Connection connection = null;
-		Statement statement = null;
+//		Statement statement = null;
+		SqlExecutor ex = null;
 		try {
 			connection = getConnection();
-			statement = connection.createStatement();
+			ex = new SqlExecutor(connection);
+//			statement = connection.createStatement();
 			try {
 				for (SqlStatement sqlStatement : sqlStatements) {
-					getLog().debug(sqlStatement.toString());
-					statement.execute(sqlStatement.toString());
+					getLog().info(sqlStatement.toString());
+					ex.execute(sqlStatement.toString());
+//					statement.execute(sqlStatement.toString());
 				}
 			} finally {
-				statement.close();
+//				statement.close();
 			}
 		} catch (SQLException e) {
 			throw new MojoExecutionException("", e);
