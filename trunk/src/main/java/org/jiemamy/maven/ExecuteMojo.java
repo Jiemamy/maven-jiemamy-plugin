@@ -135,7 +135,7 @@ public class ExecuteMojo extends AbstractJiemamyMojo {
 					JiemamyContext.findSerializer().deserialize(inputStream, SqlFacet.PROVIDER, DiagramFacet.PROVIDER);
 			getLog().debug(context.toString());
 			
-			getLog().info("Exec Sql...");
+			getLog().info("Execute SQLs...");
 			Dialect dialect = context.findDialect();
 			List<SqlStatement> sqlStatements = dialect.getSqlEmitter().emit(context, newEmitConfig());
 			execSqlStatment(sqlStatements);
@@ -162,7 +162,6 @@ public class ExecuteMojo extends AbstractJiemamyMojo {
 	 * @since 0.3
 	 */
 	protected Connection getConnection() throws MojoExecutionException {
-		Connection connection = null;
 		SimpleDbImportConfig config = new SimpleDbImportConfig();
 		config.setDriverClassName(driver);
 		config.setUsername(username);
@@ -176,8 +175,12 @@ public class ExecuteMojo extends AbstractJiemamyMojo {
 		URL[] paths = config.getDriverJarPaths();
 		String className = config.getDriverClassName();
 		
+		Connection connection = null;
 		try {
 			Driver jdbcDriver = DriverUtil.getDriverInstance(paths, className);
+			getLog().info("connect to " + uri);
+			getLog().debug("  username: " + username);
+			getLog().debug("  password: ****");
 			connection = jdbcDriver.connect(config.getUri(), props);
 		} catch (DriverNotFoundException e) {
 			throw new MojoExecutionException("", e);
@@ -205,25 +208,18 @@ public class ExecuteMojo extends AbstractJiemamyMojo {
 	 */
 	private void execSqlStatment(List<SqlStatement> sqlStatements) throws MojoExecutionException {
 		Connection connection = null;
-//		Statement statement = null;
-		SqlExecutor ex = null;
 		try {
 			connection = getConnection();
-			ex = new SqlExecutor(connection);
-//			statement = connection.createStatement();
-			try {
-				for (SqlStatement sqlStatement : sqlStatements) {
-					getLog().info(sqlStatement.toString());
-					ex.execute(sqlStatement.toString());
-//					statement.execute(sqlStatement.toString());
-				}
-			} finally {
-//				statement.close();
+			SqlExecutor ex = new SqlExecutor(connection);
+			for (SqlStatement sqlStatement : sqlStatements) {
+				getLog().info("EXECUTE: " + sqlStatement.toString());
+				ex.execute(sqlStatement.toString());
 			}
 		} catch (SQLException e) {
 			throw new MojoExecutionException("", e);
 		} finally {
 			DbUtils.closeQuietly(connection);
+			getLog().info("connection closed.");
 		}
 	}
 	
