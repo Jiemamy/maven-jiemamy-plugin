@@ -41,7 +41,7 @@ import org.jiemamy.utils.sql.DriverNotFoundException;
  * 
  * @goal import
  * @since 0.3
- * @version $Id: ImportMojo.java 3676 2009-09-24 16:24:35Z yamkazu $
+ * @version $Id$
  * @author yamkazu
  */
 public class ImportMojo extends AbstractJiemamyMojo {

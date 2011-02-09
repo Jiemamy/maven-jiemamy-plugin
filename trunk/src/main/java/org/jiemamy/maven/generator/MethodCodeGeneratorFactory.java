@@ -27,7 +27,7 @@ import java.util.Date;
  * {@link MethodCodeGenerator}のファクトリークラス。
  * 
  * @since 0.3
- * @version $Id: MethodCodeGeneratorFactory.java 3664 2009-09-24 08:18:26Z yamkazu $
+ * @version $Id$
  * @author yamkazu
  */
 public class MethodCodeGeneratorFactory {

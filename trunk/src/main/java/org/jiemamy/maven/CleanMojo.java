@@ -32,7 +32,7 @@ import org.jiemamy.utils.sql.DriverNotFoundException;
  * 
  * @goal clean
  * @author daisuke
- * @version $Id: CleanMojo.java 3674 2009-09-24 16:09:50Z yamkazu $
+ * @version $Id$
  * @since 0.2
  */
 public class CleanMojo extends AbstractJiemamyMojo {

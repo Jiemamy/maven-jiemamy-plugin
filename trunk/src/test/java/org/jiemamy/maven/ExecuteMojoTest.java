@@ -35,7 +35,7 @@ import org.jiemamy.utils.DbCleaner;
  * {@link ExecuteMojo}のテストクラス。
  * 
  * @author yamkazu
- * @version $Id: ExecuteMojoTest.java 3662 2009-09-24 06:20:36Z yamkazu $
+ * @version $Id$
  * @since 0.3
  */
 public class ExecuteMojoTest extends AbstractDatabaseTest {

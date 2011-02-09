@@ -37,7 +37,7 @@ import org.jiemamy.composer.exporter.SqlExporter;
  * {@link ExportMojo}のテストクラス。
  * 
  * @author daisuke
- * @version $Id: ExportMojoTest.java 3672 2009-09-24 15:48:47Z yamkazu $
+ * @version $Id$
  * @since 0.2
  */
 public class ExportMojoTest {

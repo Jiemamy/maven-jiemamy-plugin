@@ -37,7 +37,7 @@ import org.jiemamy.utils.sql.DriverUtil;
  * MojoのAbstractクラス。
  * 
  * @since 0.3
- * @version $Id: AbstractJiemamyMojo.java 3675 2009-09-24 16:15:35Z yamkazu $
+ * @version $Id$
  * @author yamkazu
  */
 public abstract class AbstractJiemamyMojo extends AbstractMojo {

@@ -64,7 +64,7 @@ import org.jiemamy.utils.reflect.ReflectionUtil;
  * @goal export
  * @author daisuke
  * @author yamkazu
- * @version $Id: ExportMojo.java 3674 2009-09-24 16:09:50Z yamkazu $
+ * @version $Id$
  * @since 0.3
  */
 public class ExportMojo extends AbstractJiemamyMojo {
