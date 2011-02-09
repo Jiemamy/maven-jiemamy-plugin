@@ -18,8 +18,8 @@
     <url>http://jira.jiemamy.org/browse/MVN</url>
   </issueManagement>
   <ciManagement>
-    <system>hudson</system>
-    <url>http://hudson.jiemamy.org/job/maven-jiemamy-plugin/</url>
+    <system>bamboo</system>
+    <url>http://bamboo.jiemamy.org/browse/EROS-MVN</url>
     <notifiers>
       <notifier>
         <sendOnSuccess>false</sendOnSuccess>

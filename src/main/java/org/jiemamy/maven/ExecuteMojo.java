@@ -26,6 +26,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import org.apache.commons.dbutils.DbUtils;
+import org.apache.commons.lang.Validate;
 import org.apache.maven.plugin.MojoExecutionException;
 
 import org.jiemamy.DiagramFacet;
@@ -123,8 +124,10 @@ public class ExecuteMojo extends AbstractJiemamyMojo {
 	 * 
 	 * @param sqlStatements {@link SqlStatement}のリスト
 	 * @throws MojoExecutionException SQLの実行に失敗した場合
+	 * @throws IllegalArgumentException 引数に{@code null}または{@code null}要素を与えた場合
 	 */
 	private void execSqlStatment(List<SqlStatement> sqlStatements) throws MojoExecutionException {
+		Validate.noNullElements(sqlStatements);
 		Connection connection = null;
 		try {
 			connection = getConnection();

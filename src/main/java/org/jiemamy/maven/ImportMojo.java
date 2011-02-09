@@ -73,6 +73,11 @@ public class ImportMojo extends AbstractJiemamyMojo {
 		
 		Connection connection = null;
 		try {
+			File parent = outputFile.getParentFile();
+			if (parent.mkdirs() == false) {
+				throw new IOException("cannot create directory: " + parent);
+			}
+			
 			connection = getConnection();
 			
 			if (connection == null) {

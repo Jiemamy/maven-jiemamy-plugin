@@ -49,6 +49,9 @@ public class CleanMojo extends AbstractJiemamyMojo {
 	public void execute() throws MojoExecutionException {
 		getLog().info(">>>> Starting maven-jiemamy-plugin:clean...");
 		
+		getLog().info("URI: " + getUri());
+		getLog().debug("username: " + getUsername());
+		getLog().debug("password: ****");
 		try {
 			JiemamyContext context = newJiemamyContext();
 			SimpleJmMetadata metadata = new SimpleJmMetadata();
