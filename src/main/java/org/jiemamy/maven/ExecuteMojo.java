@@ -46,7 +46,7 @@ import org.jiemamy.utils.sql.SqlExecutor;
  * @goal execute
  * @author daisuke
  * @author yamkazu
- * @version $Id: ExecuteMojo.java 3674 2009-09-24 16:09:50Z yamkazu $
+ * @version $Id$
  * @since 0.3
  */
 public class ExecuteMojo extends AbstractJiemamyMojo {

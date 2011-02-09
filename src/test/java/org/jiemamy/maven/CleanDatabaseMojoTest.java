@@ -32,7 +32,7 @@ import org.jiemamy.utils.sql.SqlExecutor;
  * {@link CleanMojo}のテストクラス。
  * 
  * @author daisuke
- * @version $Id: CleanDatabaseMojoTest.java 3630 2009-09-20 16:32:15Z daisuke_m $
+ * @version $Id$
  * @since 0.2
  */
 public class CleanDatabaseMojoTest extends AbstractDatabaseTest {

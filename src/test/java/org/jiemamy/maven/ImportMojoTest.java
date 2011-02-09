@@ -28,7 +28,7 @@ import org.junit.Test;
  * {@link ImportMojo}のテストクラス。
  * 
  * @author yamkazu
- * @version $Id: ImportMojoTest.java 3660 2009-09-24 06:02:12Z yamkazu $
+ * @version $Id$
  * @since 0.3
  */
 public class ImportMojoTest extends AbstractMojoTestCase {

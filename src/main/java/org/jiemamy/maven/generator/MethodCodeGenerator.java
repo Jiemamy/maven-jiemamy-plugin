@@ -22,7 +22,7 @@ package org.jiemamy.maven.generator;
  * {@code Method}のコードを生成するクラス。
  * 
  * @since 0.3
- * @version $Id: MethodCodeGenerator.java 3664 2009-09-24 08:18:26Z yamkazu $
+ * @version $Id$
  * @author yamkazu
  */
 public interface MethodCodeGenerator {
