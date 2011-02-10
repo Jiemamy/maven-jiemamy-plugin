@@ -7,11 +7,12 @@
       <plugin>
         <artifactId>maven-jiemamy-plugin</artifactId>
         <configuration>
-          <outputFile>target/jiemamy.jer</outputFile>
-          <driver>org.postgresql.Driver</driver>
-          <uri>jdbc:postgresql:test</uri>
-          <username>postgres</username>
-          <password>postgres</password>
+          <driver>${database.driver}</driver>
+          <uri>${database.uri}</uri>
+          <username>${database.username}</username>
+          <password>${database.password}</password>
+          <dialect>org.jiemamy.dialect.postgresql.PostgresqlDialect</dialect>
+          <outputFile>target/testresults/imported.jiemamy</outputFile>
         </configuration>
       </plugin>
     </plugins>
