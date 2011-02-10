@@ -1,4 +1,4 @@
-<configuration debug="false">
+<configuration debug="true">
   <appender name="STDOUT"
     class="ch.qos.logback.core.ConsoleAppender">
    <Target>System.out</Target>
@@ -15,4 +15,9 @@
   <logger name="org.jiemamy">
     <level value="INFO" />
   </logger>
+
+  <logger name="org.jiemamy.utils.sql">
+    <level value="WARN" />
+  </logger>
+
 </configuration>
