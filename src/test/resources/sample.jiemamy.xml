@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<jiemamy xmlns="http://jiemamy.org/xml/ns/core" version="0.3.0-SNAPSHOT">
+<jiemamy xmlns="http://jiemamy.org/xml/ns/core" version="0.3">
   <metadata class="org.jiemamy.SimpleJmMetadata">
     <dialect>org.jiemamy.dialect.mysql.MySqlDialect</dialect>
     <schemaName>FOO</schemaName>
