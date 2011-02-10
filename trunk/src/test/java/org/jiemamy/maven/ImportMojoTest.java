@@ -18,6 +18,11 @@
  */
 package org.jiemamy.maven;
 
+import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.assertThat;
+
+import java.io.File;
+
 import org.apache.maven.plugin.testing.AbstractMojoTestCase;
 import org.junit.After;
 import org.junit.Before;
@@ -49,15 +54,20 @@ public class ImportMojoTest extends AbstractMojoTestCase {
 	 * DBからimportを行いjiemamyファイルを生成するテスト。
 	 * 
 	 * @throws Exception importに失敗した場合
-	 * @since 0.3
 	 */
 	@Test
 	@Ignore
 	public void test01_DBからimportを行いjiemamyファイルを生成する() throws Exception {
-		// TODO とりあえずテストが失敗するのでコメントアウト
-//		File testPom = new File(getBasedir(), "src/test/resources/importmojo/pom.xml");
-//		ImportMojo mojo = (ImportMojo) lookupMojo("import", testPom);
-//		mojo.execute();
+		File target = new File("target/testresults/imported.jiemamy");
+		if (target.exists()) {
+			boolean deleted = target.delete();
+			assert deleted;
+		}
+		
+		File testPom = new File(getBasedir(), "src/test/resources/importmojo/pom.xml");
+		ImportMojo mojo = (ImportMojo) lookupMojo("import", testPom);
+		mojo.execute();
+		
+		assertThat(target.exists(), is(true));
 	}
-	
 }
