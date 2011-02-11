@@ -173,17 +173,26 @@ public class ExportMojo extends AbstractJiemamyMojo {
 	
 	private void executeJiemamy(JiemamyContext context) throws ExportException {
 		getLog().info("Configure Exporter...");
-		SqlExporter exporter = new SqlExporter();
 		SimpleSqlExportConfig config = new SimpleSqlExportConfig();
-		config.setOutputFile(new File(parameter.get(SqlExporter.OUTPUT_FILE)));
-		config.setOverwrite(Boolean.valueOf(parameter.get(SqlExporter.OVERWRITE)));
-		config.setEmitDropStatements(Boolean.valueOf(parameter.get(SqlExporter.DROP)));
-		config.setEmitCreateSchema(Boolean.valueOf(parameter.get(SqlExporter.SCHEMA)));
+		
+		if (parameter.containsKey(SqlExporter.OUTPUT_FILE)) {
+			config.setOutputFile(new File(parameter.get(SqlExporter.OUTPUT_FILE)));
+		}
+		if (parameter.containsKey(SqlExporter.OVERWRITE)) {
+			config.setOverwrite(Boolean.valueOf(parameter.get(SqlExporter.OVERWRITE)));
+		}
+		if (parameter.containsKey(SqlExporter.DROP)) {
+			config.setEmitDropStatements(Boolean.valueOf(parameter.get(SqlExporter.DROP)));
+		}
+		if (parameter.containsKey(SqlExporter.SCHEMA)) {
+			config.setEmitCreateSchema(Boolean.valueOf(parameter.get(SqlExporter.SCHEMA)));
+		}
 		String indexObject = parameter.get(SqlExporter.DATA_SET_INDEX);
 		config.setDataSetIndex(indexObject == null ? -1 : Integer.valueOf(indexObject));
 		
 		getLog().info("Executing Exporter...");
 		
+		SqlExporter exporter = new SqlExporter();
 		exporter.exportModel(context, config);
 	}
 	
