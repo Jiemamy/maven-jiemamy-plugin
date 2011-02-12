@@ -42,6 +42,7 @@ import javassist.NotFoundException;
 
 import com.google.common.collect.Sets;
 
+import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 
 import org.jiemamy.DiagramFacet;
@@ -59,7 +60,7 @@ import org.jiemamy.serializer.SerializationException;
 import org.jiemamy.utils.reflect.ReflectionUtil;
 
 /**
- * Goal which execute Exporter.
+ * Export Jiemamy XML model to certain resources by executing Exporter.
  * 
  * @goal export
  * @author daisuke
@@ -67,7 +68,7 @@ import org.jiemamy.utils.reflect.ReflectionUtil;
  * @version $Id$
  * @since 0.3
  */
-public class ExportMojo extends AbstractJiemamyMojo {
+public class ExportMojo extends AbstractMojo {
 	
 	/**
 	 * Location of the input model file.

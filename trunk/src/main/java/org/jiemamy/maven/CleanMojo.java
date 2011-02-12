@@ -28,7 +28,7 @@ import org.jiemamy.utils.DbCleaner;
 import org.jiemamy.utils.sql.DriverNotFoundException;
 
 /**
- * Goal which clean Database.
+ * Clean database.  Drop all tables, views and so on.
  * 
  * @goal clean
  * @author daisuke

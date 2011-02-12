@@ -12,6 +12,7 @@
   <artifactId>maven-jiemamy-plugin</artifactId>
   <packaging>maven-plugin</packaging>
   <name>Jiemamy Maven Plugin</name>
+  <description>The Jiemamy Plugin is used to execute/import/export Jiemamy XML model.</description>
   <version>0.3.0-SNAPSHOT</version>
   <issueManagement>
     <system>JIRA</system>

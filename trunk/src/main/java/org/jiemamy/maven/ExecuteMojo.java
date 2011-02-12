@@ -41,7 +41,7 @@ import org.jiemamy.serializer.SerializationException;
 import org.jiemamy.utils.sql.SqlExecutor;
 
 /**
- * jerファイルから生成したSQLをDBに適用するゴール。
+ * Execute SQLs which generated from Jiemamy XML model.
  * 
  * @goal execute
  * @author daisuke
