@@ -25,7 +25,7 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 /**
- * {@link ImportMojo}のテストクラス。
+ * {@link DbImportMojo}のテストクラス。
  * 
  * @author yamkazu
  * @version $Id$
@@ -61,7 +61,7 @@ public class ImportMojoTest extends AbstractMojoTestCase {
 //		}
 //		
 //		File testPom = new File(getBasedir(), "src/test/resources/importmojo/pom.xml");
-//		ImportMojo mojo = (ImportMojo) lookupMojo("import", testPom);
+//		DbImportMojo mojo = (DbImportMojo) lookupMojo("import", testPom);
 //		mojo.execute();
 //		
 //		assertThat(target.exists(), is(true));

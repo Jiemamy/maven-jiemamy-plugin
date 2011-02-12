@@ -37,14 +37,14 @@ import org.jiemamy.serializer.SerializationException;
 import org.jiemamy.utils.sql.DriverNotFoundException;
 
 /**
- * Import from Database to Jiemamy Model.
+ * Import Jiemamy XML model from database.
  * 
- * @goal import
+ * @goal dbimport
  * @since 0.3
  * @version $Id$
  * @author yamkazu
  */
-public class ImportMojo extends AbstractJiemamyMojo {
+public class DbImportMojo extends AbstractJiemamyMojo {
 	
 	/**
 	 * dialect class.
