@@ -33,7 +33,7 @@ import org.jiemamy.utils.sql.DriverNotFoundException;
  * @goal clean
  * @author daisuke
  * @version $Id$
- * @since 0.2
+ * @since 0.3
  */
 public class CleanMojo extends AbstractJiemamyMojo {
 	

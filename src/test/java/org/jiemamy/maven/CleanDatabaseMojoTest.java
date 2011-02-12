@@ -33,7 +33,7 @@ import org.jiemamy.utils.sql.SqlExecutor;
  * 
  * @author daisuke
  * @version $Id$
- * @since 0.2
+ * @since 0.3
  */
 public class CleanDatabaseMojoTest extends AbstractDatabaseTest {
 	
