@@ -16,8 +16,10 @@
           <logicalName>従業員ID</logicalName>
           <description/>
           <dataType class="org.jiemamy.model.datatype.SimpleDataType">
-            <typeCategory>INTEGER</typeCategory>
-            <typeName>INTEGER</typeName>
+            <typeDesc>
+              <typeCategory>INTEGER</typeCategory>
+              <typeName>INTEGER</typeName>
+            </typeDesc>
             <parameters>
               <parameter key="serial">true</parameter>
             </parameters>
@@ -29,8 +31,10 @@
           <logicalName>従業員番号</logicalName>
           <description/>
           <dataType class="org.jiemamy.model.datatype.SimpleDataType">
-            <typeCategory>INTEGER</typeCategory>
-            <typeName>INTEGER</typeName>
+            <typeDesc>
+              <typeCategory>INTEGER</typeCategory>
+              <typeName>INTEGER</typeName>
+            </typeDesc>
             <parameters>
               <parameter key="serial">false</parameter>
             </parameters>
@@ -42,8 +46,10 @@
           <logicalName>従業員名</logicalName>
           <description/>
           <dataType class="org.jiemamy.model.datatype.SimpleDataType">
-            <typeCategory>VARCHAR</typeCategory>
-            <typeName>VARCHAR</typeName>
+            <typeDesc>
+              <typeCategory>VARCHAR</typeCategory>
+              <typeName>VARCHAR</typeName>
+            </typeDesc>
             <parameters>
               <parameter key="size">64</parameter>
             </parameters>
@@ -55,8 +61,10 @@
           <logicalName>上司ID</logicalName>
           <description/>
           <dataType class="org.jiemamy.model.datatype.SimpleDataType">
-            <typeCategory>INTEGER</typeCategory>
-            <typeName>INTEGER</typeName>
+            <typeDesc>
+              <typeCategory>INTEGER</typeCategory>
+              <typeName>INTEGER</typeName>
+            </typeDesc>
             <parameters>
               <parameter key="serial">false</parameter>
             </parameters>
@@ -68,8 +76,10 @@
           <logicalName/>
           <description/>
           <dataType class="org.jiemamy.model.datatype.SimpleDataType">
-            <typeCategory>DATE</typeCategory>
-            <typeName>DATE</typeName>
+            <typeDesc>
+              <typeCategory>DATE</typeCategory>
+              <typeName>DATE</typeName>
+            </typeDesc>
           </dataType>
           <defaultValue/>
         </column>
@@ -78,8 +88,10 @@
           <logicalName/>
           <description/>
           <dataType class="org.jiemamy.model.datatype.SimpleDataType">
-            <typeCategory>NUMERIC</typeCategory>
-            <typeName>NUMERIC</typeName>
+            <typeDesc>
+              <typeCategory>NUMERIC</typeCategory>
+              <typeName>NUMERIC</typeName>
+            </typeDesc>
             <parameters>
               <parameter key="precision">7</parameter>
               <parameter key="scale">2</parameter>
@@ -92,8 +104,10 @@
           <logicalName/>
           <description/>
           <dataType class="org.jiemamy.model.datatype.SimpleDataType">
-            <typeCategory>INTEGER</typeCategory>
-            <typeName>INTEGER</typeName>
+            <typeDesc>
+              <typeCategory>INTEGER</typeCategory>
+              <typeName>INTEGER</typeName>
+            </typeDesc>
             <parameters>
               <parameter key="serial">false</parameter>
             </parameters>
@@ -150,8 +164,10 @@
           <logicalName>部署ID</logicalName>
           <description/>
           <dataType class="org.jiemamy.model.datatype.SimpleDataType">
-            <typeCategory>INTEGER</typeCategory>
-            <typeName>INTEGER</typeName>
+            <typeDesc>
+              <typeCategory>INTEGER</typeCategory>
+              <typeName>INTEGER</typeName>
+            </typeDesc>
             <parameters>
               <parameter key="serial">false</parameter>
               <parameter key="size">0</parameter>
@@ -164,8 +180,10 @@
           <logicalName>部署番号</logicalName>
           <description/>
           <dataType class="org.jiemamy.model.datatype.SimpleDataType">
-            <typeCategory>INTEGER</typeCategory>
-            <typeName>INTEGER</typeName>
+            <typeDesc>
+              <typeCategory>INTEGER</typeCategory>
+              <typeName>INTEGER</typeName>
+            </typeDesc>
             <parameters>
               <parameter key="serial">false</parameter>
             </parameters>
@@ -177,8 +195,10 @@
           <logicalName>部署名</logicalName>
           <description/>
           <dataType class="org.jiemamy.model.datatype.SimpleDataType">
-            <typeCategory>VARCHAR</typeCategory>
-            <typeName>VARCHAR</typeName>
+            <typeDesc>
+              <typeCategory>VARCHAR</typeCategory>
+              <typeName>VARCHAR</typeName>
+            </typeDesc>
             <parameters>
               <parameter key="size">20</parameter>
             </parameters>
@@ -190,8 +210,10 @@
           <logicalName>ロケーション</logicalName>
           <description/>
           <dataType class="org.jiemamy.model.datatype.SimpleDataType">
-            <typeCategory>VARCHAR</typeCategory>
-            <typeName>VARCHAR</typeName>
+            <typeDesc>
+              <typeCategory>VARCHAR</typeCategory>
+              <typeName>VARCHAR</typeName>
+            </typeDesc>
             <parameters>
               <parameter key="size">20</parameter>
             </parameters>
