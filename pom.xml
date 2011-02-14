@@ -76,13 +76,13 @@
     <dependency>
       <groupId>org.jiemamy</groupId>
       <artifactId>jiemamy-dialect-mysql</artifactId>
-      <version>0.3.0-SNAPSHOT</version>
+      <version>${jiemamy.version}</version>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.jiemamy</groupId>
       <artifactId>jiemamy-dialect-postgresql</artifactId>
-      <version>0.3.0-SNAPSHOT</version>
+      <version>${jiemamy.version}</version>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -98,22 +98,22 @@
     <dependency>
       <groupId>org.jiemamy</groupId>
       <artifactId>jiemamy-core</artifactId>
-      <version>0.3.0-SNAPSHOT</version>
+      <version>${jiemamy.version}</version>
     </dependency>
     <dependency>
       <groupId>org.jiemamy</groupId>
       <artifactId>jiemamy-diagram</artifactId>
-      <version>0.3.0-SNAPSHOT</version>
+      <version>${jiemamy.version}</version>
     </dependency>
     <dependency>
       <groupId>org.jiemamy</groupId>
       <artifactId>jiemamy-sql</artifactId>
-      <version>0.3.0-SNAPSHOT</version>
+      <version>${jiemamy.version}</version>
     </dependency>
     <dependency>
       <groupId>org.jiemamy.test</groupId>
       <artifactId>jiemamy-test-helper</artifactId>
-      <version>0.3.0-SNAPSHOT</version>
+      <version>${jiemamy.version}</version>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -129,6 +129,7 @@
       <name>Jiemamy Repository</name>
       <url>http://maven.jiemamy.org/release</url>
     </repository>
+    <!-- 
     <repository>
       <id>jiemamy.org-snapshot</id>
       <name>Jiemamy Snapshot Repository</name>
@@ -138,5 +139,9 @@
         <updatePolicy>always</updatePolicy>
       </snapshots>
     </repository>
+    -->
   </repositories>
+  <properties>
+    <jiemamy.version>0.3.0</jiemamy.version>
+  </properties>
 </project>
