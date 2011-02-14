@@ -11,7 +11,7 @@
           <uri>${database.uri}</uri>
           <username>${database.username}</username>
           <password>${database.password}</password>
-          <dialect>org.jiemamy.dialect.postgresql.PostgreSqDialect</dialect>
+          <dialect>org.jiemamy.dialect.postgresql.PostgreSqlDialect</dialect>
           <outputFile>target/testresults/imported.jiemamy</outputFile>
         </configuration>
       </plugin>
