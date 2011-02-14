@@ -27,7 +27,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import org.jiemamy.composer.importer.SimpleDbImportConfig;
-import org.jiemamy.dialect.postgresql.PostgresqlDialect;
+import org.jiemamy.dialect.postgresql.PostgreSqDialect;
 import org.jiemamy.test.AbstractDatabaseTest;
 import org.jiemamy.utils.DbCleaner;
 
@@ -109,7 +109,7 @@ public class ExecuteMojoTest extends AbstractDatabaseTest {
 	 */
 	@Test
 	public void test01_jiemamyファイルからSQLを生成しDBに適用する() throws Exception {
-		SimpleDbImportConfig config = newDatabaseImportConfig(new PostgresqlDialect(), new URL[] {
+		SimpleDbImportConfig config = newDatabaseImportConfig(new PostgreSqDialect(), new URL[] {
 			new File("./src/test/resources/postgresql-8.3-603.jdbc3.jar").toURI().toURL()
 		});
 		DbCleaner.clean(config);
