@@ -119,8 +119,8 @@ public class ExecuteMojoTest extends AbstractDatabaseTest {
 	
 	@Override
 	protected String getPropertiesFilePath(String hostName) {
-		if (hostName.equals("griffon.jiemamy.org")) {
-			return "/postgresql_griffon.properties";
+		if (hostName.equals("phoenix.jiemamy.org")) {
+			return "/postgresql_phoenix.properties";
 		}
 		return "/postgresql_local.properties";
 	}
