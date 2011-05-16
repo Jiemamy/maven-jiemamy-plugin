@@ -74,13 +74,13 @@
     <dependency>
       <groupId>org.jiemamy</groupId>
       <artifactId>jiemamy-dialect-mysql</artifactId>
-      <version>${jiemamy.version}</version>
+      <version>${jiemamy.mysql.version}</version>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.jiemamy</groupId>
       <artifactId>jiemamy-dialect-postgresql</artifactId>
-      <version>${jiemamy.version}</version>
+      <version>${jiemamy.postgresql.version}</version>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -140,6 +140,8 @@
     -->
   </repositories>
   <properties>
-    <jiemamy.version>0.3.0</jiemamy.version>
+    <jiemamy.version>0.3.1</jiemamy.version>
+    <jiemamy.mysql.version>0.3.0</jiemamy.mysql.version>
+    <jiemamy.postgresql.version>0.3.0</jiemamy.postgresql.version>
   </properties>
 </project>
