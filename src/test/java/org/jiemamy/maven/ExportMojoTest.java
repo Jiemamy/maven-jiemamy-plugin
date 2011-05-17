@@ -112,7 +112,7 @@ public class ExportMojoTest {
 		paramaters.put(SqlExporter.SCHEMA, "true");
 		paramaters.put(SqlExporter.DROP, "true");
 		paramaters.put(SqlExporter.OUTPUT_FILE, "target/testresult/sample.sql");
-		paramaters.put(SqlExporter.DATA_SET_INDEX, "1");
+		paramaters.put(SqlExporter.DATA_SET_INDEX, "-1");
 		return paramaters;
 	}
 }
