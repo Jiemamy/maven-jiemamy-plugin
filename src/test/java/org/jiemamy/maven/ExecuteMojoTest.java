@@ -72,7 +72,7 @@ public class ExecuteMojoTest extends AbstractDatabaseTest {
 		
 		Field dataSetIndexField = ExecuteMojo.class.getDeclaredField("dataSetIndex");
 		dataSetIndexField.setAccessible(true);
-		dataSetIndexField.set(executeMojo, 0);
+		dataSetIndexField.set(executeMojo, -1);
 		
 		Field driverField = AbstractJiemamyMojo.class.getDeclaredField("driver");
 		driverField.setAccessible(true);
