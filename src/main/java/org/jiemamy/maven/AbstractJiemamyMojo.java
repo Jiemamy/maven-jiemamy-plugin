@@ -81,7 +81,7 @@ public abstract class AbstractJiemamyMojo extends AbstractMojo {
 	 */
 	private String password;
 	
-
+	
 	/**
 	 * デフォルトの出力先を取得する。
 	 * 
@@ -175,5 +175,4 @@ public abstract class AbstractJiemamyMojo extends AbstractMojo {
 	protected JiemamyContext newJiemamyContext() {
 		return new JiemamyContext(SqlFacet.PROVIDER);
 	}
-	
 }
