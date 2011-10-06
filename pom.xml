@@ -6,7 +6,6 @@
     <artifactId>jiemamy-master</artifactId>
     <version>1.7.2</version>
   </parent>
-  <groupId>org.jiemamy</groupId>
   <artifactId>maven-jiemamy-plugin</artifactId>
   <packaging>maven-plugin</packaging>
   <name>Jiemamy Maven Plugin</name>
@@ -140,7 +139,7 @@
     -->
   </repositories>
   <properties>
-    <jiemamy.version>0.3.1</jiemamy.version>
+    <jiemamy.version>0.3.2</jiemamy.version>
     <jiemamy.mysql.version>0.3.0</jiemamy.mysql.version>
     <jiemamy.postgresql.version>0.3.0</jiemamy.postgresql.version>
   </properties>
