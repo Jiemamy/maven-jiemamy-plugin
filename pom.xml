@@ -10,7 +10,7 @@
   <packaging>maven-plugin</packaging>
   <name>Jiemamy Maven Plugin</name>
   <description>The Jiemamy Plugin is used to execute/import/export Jiemamy XML model.</description>
-  <version>0.3.2-SNAPSHOT</version>
+  <version>0.3.2</version>
   <issueManagement>
     <system>JIRA</system>
     <url>http://jira.jiemamy.org/browse/MVN</url>
@@ -38,9 +38,9 @@
     </developer>
   </developers>
   <scm>
-    <connection>scm:svn:http://svn.jiemamy.org/products/eros/maven-jiemamy-plugin/trunk</connection>
-    <developerConnection>scm:svn:http://svn.jiemamy.org/products/eros/maven-jiemamy-plugin/trunk</developerConnection>
-    <url>http://fisheye.jiemamy.org/browse/eros/maven-jiemamy-plugin/trunk</url>
+    <connection>scm:svn:http://svn.jiemamy.org/products/eros/maven-jiemamy-plugin/tags/maven-jiemamy-plugin-0.3.2</connection>
+    <developerConnection>scm:svn:http://svn.jiemamy.org/products/eros/maven-jiemamy-plugin/tags/maven-jiemamy-plugin-0.3.2</developerConnection>
+    <url>http://fisheye.jiemamy.org/browse/eros/maven-jiemamy-plugin/tags/maven-jiemamy-plugin-0.3.2</url>
   </scm>
   <dependencies>
     <dependency>
