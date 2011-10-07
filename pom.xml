@@ -139,7 +139,7 @@
     -->
   </repositories>
   <properties>
-    <jiemamy.version>0.3.2</jiemamy.version>
+    <jiemamy.version>0.3.3-SNAPSHOT</jiemamy.version>
     <jiemamy.mysql.version>0.3.0</jiemamy.mysql.version>
     <jiemamy.postgresql.version>0.3.0</jiemamy.postgresql.version>
   </properties>

@@ -54,7 +54,7 @@
               <parameter key="size">64</parameter>
             </parameters>
           </dataType>
-          <defaultValue>no name</defaultValue>
+          <defaultValue>'no name'</defaultValue>
         </column>
         <column id="0c1c11c7-2a71-4be5-95b2-6cd0a7c5001c" class="org.jiemamy.model.column.SimpleJmColumn">
           <name>MGR_ID</name>
@@ -218,7 +218,7 @@
               <parameter key="size">20</parameter>
             </parameters>
           </dataType>
-          <defaultValue>secret</defaultValue>
+          <defaultValue>'secret'</defaultValue>
         </column>
       </columns>
       <constraints>
