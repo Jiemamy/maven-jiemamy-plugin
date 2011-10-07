@@ -122,32 +122,23 @@ public class ExportMojo extends AbstractMojo {
 				executeExport(context);
 			}
 		} catch (FileNotFoundException e) {
-			e.printStackTrace(); // FIXME リリースまでに、このメソッド内の Exception#printStackTrace() を削除する
 			throw new MojoExecutionException("Jiemamy model file \"" + inputFile.getName() + "\" is not found.", e);
 		} catch (SerializationException e) {
-			e.printStackTrace();
 			throw new MojoExecutionException("Cannot deserialize file \"" + inputFile.getName(), e);
 		} catch (ExportException e) {
-			e.printStackTrace();
-			throw new MojoExecutionException("ExportException is thrown.", e);
+			throw new MojoExecutionException("ExportException: " + e.getMessage(), e);
 		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
 			throw new MojoExecutionException("Exporter \"" + exporterClass + "\" is not found.", e);
 		} catch (InstantiationException e) {
-			e.printStackTrace();
 			throw new MojoExecutionException("Cannot instantiate Exporter \"" + exporterClass + "\"", e);
 		} catch (IllegalAccessException e) {
-			e.printStackTrace();
 			throw new MojoExecutionException("Cannot access Exporter \"" + exporterClass + "\"", e);
 		} catch (NotFoundException e) {
-			e.printStackTrace();
 			throw new MojoExecutionException("Cannot compile generate ExportConfig class.", e);
 		} catch (CannotCompileException e) {
-			e.printStackTrace();
 			throw new MojoExecutionException("Cannot compile generate ExportConfig class.", e);
 		} catch (Exception e) {
-			e.printStackTrace();
-			throw new MojoExecutionException("Exception is thrown.", e);
+			throw new MojoExecutionException("Exception: " + e.getMessage(), e);
 		} finally {
 			getLog().info("done.");
 		}
