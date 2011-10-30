@@ -126,6 +126,11 @@
       <name>Jiemamy Repository</name>
       <url>http://maven.jiemamy.org/release</url>
     </repository>
+    <repository>
+      <id>jiemamy.org-snapshot</id>
+      <name>Jiemamy SNAPSHOT Repository</name>
+      <url>http://maven.jiemamy.org/snapshot</url>
+    </repository>
     <!-- 
     <repository>
       <id>jiemamy.org-snapshot</id>
