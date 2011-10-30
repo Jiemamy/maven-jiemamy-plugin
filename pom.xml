@@ -144,7 +144,7 @@
     -->
   </repositories>
   <properties>
-    <jiemamy.version>${project.version}</jiemamy.version>
+    <jiemamy.version>[0.3.0,0.4.0)</jiemamy.version>
     <jiemamy.mysql.version>[0.3.0,0.4.0)</jiemamy.mysql.version>
     <jiemamy.postgresql.version>[0.3.0,0.4.0)</jiemamy.postgresql.version>
   </properties>
