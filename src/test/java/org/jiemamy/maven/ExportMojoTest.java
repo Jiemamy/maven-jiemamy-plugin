@@ -54,7 +54,7 @@ public class ExportMojoTest {
 	@SuppressWarnings("unused")
 	private String exporterClass = "org.jiemamy.composer.exporter.SqlExporter";
 	
-
+	
 	/**
 	 * テストを初期化する。
 	 * 

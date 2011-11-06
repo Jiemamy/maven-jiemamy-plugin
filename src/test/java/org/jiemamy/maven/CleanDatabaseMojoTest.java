@@ -40,7 +40,7 @@ public class CleanDatabaseMojoTest extends AbstractDatabaseTest {
 	/** テスト対象 */
 	private CleanMojo cleanDatabaseMojo;
 	
-
+	
 	/**
 	 * テストを初期化する。
 	 * 

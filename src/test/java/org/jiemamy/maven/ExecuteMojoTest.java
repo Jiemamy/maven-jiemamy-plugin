@@ -46,7 +46,7 @@ public class ExecuteMojoTest extends AbstractDatabaseTest {
 	/** テスト対象 */
 	private ExecuteMojo executeMojo;
 	
-
+	
 	/**
 	 * テストを初期化する。
 	 * 

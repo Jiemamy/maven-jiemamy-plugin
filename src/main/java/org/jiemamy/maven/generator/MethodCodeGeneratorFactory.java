@@ -34,7 +34,7 @@ public class MethodCodeGeneratorFactory {
 	
 	private static final MethodCodeGeneratorFactory FACTORY = new MethodCodeGeneratorFactory();
 	
-
+	
 	/**
 	 * {@link MethodCodeGeneratorFactory}を取得します。
 	 * 
@@ -89,14 +89,14 @@ public class MethodCodeGeneratorFactory {
 		throw new IllegalArgumentException("return type " + returnType + " not supported.");
 	}
 	
-
+	
 	abstract static class AbstractMethodCodeGenerator implements MethodCodeGenerator {
 		
 		private Method method;
 		
 		private Object value;
 		
-
+		
 		AbstractMethodCodeGenerator(Method method, Object value) {
 			this.method = method;
 			this.value = value;

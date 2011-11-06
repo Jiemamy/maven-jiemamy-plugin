@@ -45,7 +45,7 @@ public class CleanMojo extends AbstractJiemamyMojo {
 	 */
 	private String dialect;
 	
-
+	
 	public void execute() throws MojoExecutionException {
 		getLog().info(">>>> Starting maven-jiemamy-plugin:clean...");
 		

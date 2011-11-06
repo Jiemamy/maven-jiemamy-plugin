@@ -84,7 +84,7 @@ public class ExecuteMojo extends AbstractJiemamyMojo {
 	 */
 	private int dataSetIndex;
 	
-
+	
 	/**
 	 * {@link JiemamyContext}をよりSQLを生成し、DatabaseにSQLを適用する。
 	 */
@@ -144,7 +144,7 @@ public class ExecuteMojo extends AbstractJiemamyMojo {
 		}
 	}
 	
-
+	
 	/**
 	 * {@link ExecuteMojo}で使用する{@link EmitConfig}。
 	 * 
@@ -158,7 +158,7 @@ public class ExecuteMojo extends AbstractJiemamyMojo {
 		
 		int dataSetIndex;
 		
-
+		
 		/**
 		 * インスタンスを生成する。
 		 * 

@@ -62,7 +62,7 @@ public class DbImportMojo extends AbstractJiemamyMojo {
 	 */
 	private File outputFile;
 	
-
+	
 	public void execute() throws MojoExecutionException {
 		getLog().info(">>>> Starting maven-jiemamy-plugin:import...");
 		
