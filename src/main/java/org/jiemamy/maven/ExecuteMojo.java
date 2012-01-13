@@ -34,6 +34,7 @@ import org.jiemamy.JiemamyContext;
 import org.jiemamy.SqlFacet;
 import org.jiemamy.dialect.Dialect;
 import org.jiemamy.dialect.EmitConfig;
+import org.jiemamy.dialect.SimpleEmitConfig;
 import org.jiemamy.model.ModelConsistencyException;
 import org.jiemamy.model.sql.SqlStatement;
 import org.jiemamy.serializer.JiemamySerializer;
@@ -149,7 +150,9 @@ public class ExecuteMojo extends AbstractJiemamyMojo {
 	 * {@link ExecuteMojo}で使用する{@link EmitConfig}。
 	 * 
 	 * @author yamkazu
+	 * @deprecated {@link SimpleEmitConfig}に書き換えるべき
 	 */
+	@Deprecated
 	private static class ExecuteEmitConfig implements EmitConfig {
 		
 		boolean emitCreateSchemaStatement;
