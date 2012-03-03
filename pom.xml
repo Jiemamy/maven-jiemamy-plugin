@@ -4,13 +4,13 @@
   <parent>
     <groupId>org.jiemamy</groupId>
     <artifactId>jiemamy-master</artifactId>
-    <version>1.7.3</version>
+    <version>2.0.0</version>
   </parent>
   <artifactId>maven-jiemamy-plugin</artifactId>
   <packaging>maven-plugin</packaging>
   <name>Jiemamy Maven Plugin</name>
   <description>The Jiemamy Plugin is used to execute/import/export Jiemamy XML model.</description>
-  <version>0.3.5-SNAPSHOT</version>
+  <version>1.0.0-SNAPSHOT</version>
   <issueManagement>
     <system>JIRA</system>
     <url>http://jira.jiemamy.org/browse/MVN</url>
@@ -150,8 +150,8 @@
     -->
   </repositories>
   <properties>
-    <jiemamy.version>[0.3.0,0.4.0)</jiemamy.version>
-    <jiemamy.mysql.version>[0.3.0,0.4.0)</jiemamy.mysql.version>
-    <jiemamy.postgresql.version>[0.3.0,0.4.0)</jiemamy.postgresql.version>
+    <jiemamy.version>1.0.0-SNAPSHOT</jiemamy.version>
+    <jiemamy.mysql.version>1.0.0-SNAPSHOT</jiemamy.mysql.version>
+    <jiemamy.postgresql.version>1.0.0-SNAPSHOT</jiemamy.postgresql.version>
   </properties>
 </project>
